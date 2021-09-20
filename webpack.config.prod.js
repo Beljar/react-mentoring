@@ -4,8 +4,22 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     entry: './src/index.jsx',
     output: {
-        path: path.resolve(__dirname, './build'),
-        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'dist'),
+        filename: '[name].bundle.js',
+        chunkFilename: '[name].bundle.js',
+    },
+    resolve: {
+        modules: [path.resolve(__dirname, 'node_modules')],
+        extensions: [
+            '.jsx',
+            '.js',
+            '.json',
+        ]
+    },
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+        }
     },
     plugins: [
         new HTMLWebpackPlugin({
@@ -16,16 +30,33 @@ module.exports = {
     module:{
         rules: [
                 {
-                    test: /\.jsx$/,
+                    test: /\.jsx?$/i,
                     exclude: /(node_modules)/,
                     use: ['babel-loader'],
+                },
+                {
+                    test:/\.tsx?$/i,
+                    use: ['babel-loader', 'ts-loader'],
+                },
+                {
+                    test:/\.scss$/i,
+                    use: [
+                        'css-loader',
+                        'sass-loader',
+                    ]
+                },
+                {
+                    test:/\.(gif|png|jpe?g|svg)$/i,
+                    use: [
+                            {
+                                loader: 'file-loader',
+                                options: {
+                                    name: 'img/[name].[ext]'
+                                },
+                        },
+                    ],
                 }
             ]
     },
-    resolve: {
-        extensions: [
-            '.jsx',
-            '.js',
-        ]
-    } 
+
 }
