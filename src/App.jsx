@@ -1,3 +1,5 @@
 import React from "react";
 
-export const App = () => <div>I'm working!</div>;
+import scss from './styles.scss';
+
+export const App = () => <div className={scss.test}>I'm working!</div>;

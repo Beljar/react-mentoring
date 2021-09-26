@@ -41,8 +41,18 @@ module.exports = {
                 {
                     test:/\.scss$/i,
                     use: [
-                        'css-loader',
-                        'sass-loader',
+                        {loader: 'style-loader'},
+                        {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                mode: 'local',
+                                localIdentName: '[name]_[local]_[hash:base64:5]',
+                                exportLocalsConvention: 'camelCase',
+                            }
+                        }
+                    },
+                        {loader: 'sass-loader'},
                     ]
                 },
                 {
