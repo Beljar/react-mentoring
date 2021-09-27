@@ -5,10 +5,10 @@ const e = React.createElement;
 export class Search extends React.PureComponent {
     state={ loading: false }
     onWait() {
-        this.setState({ ...this.state, ...{ loading: true } });
+        this.setState({ ...this.state, loading: true });
     }
     onReady() {
-        this.setState({ ...this.state, ...{ loading: false } });
+        this.setState({ ...this.state, loading: false });
     }
     onSearch(e) {
         e.preventDefault();
@@ -16,10 +16,10 @@ export class Search extends React.PureComponent {
             this.onWait();        
             setTimeout(()=>{
                 this.onReady()
-                this.setState({ ...this.state, ...{ search: e.target.search.value } })
+                this.setState({ ...this.state, search: e.target.search.value })
             }, 500)  
         } else {
-            this.setState({ ...this.state, ...{ search: undefined } })
+            this.setState({ ...this.state, search: undefined })
         }
     }
     render() {
