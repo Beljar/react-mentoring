@@ -12,8 +12,11 @@ module.exports = {
         modules: [path.resolve(__dirname, 'node_modules')],
         extensions: [
             '.jsx',
+            '.tsx',
             '.js',
+            '.ts',
             '.json',
+            '.scss',
         ]
     },
     optimization: {
