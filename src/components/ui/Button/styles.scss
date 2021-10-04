@@ -2,6 +2,7 @@
 
 .button {
     border: none;
+    border-radius: 4px;
     margin: 0;
     padding: 0;
     width: auto;
@@ -20,6 +21,18 @@
         }
         &:active {
             background-color: $color-main-active;
+        }
+    }   
+    &.transparent {
+        font-weight: 600;
+        color: $color-main;
+        background-color: $color-ui-transparent;
+        transition:  background-color 0.3s ease;
+        &:hover {
+            background-color: $color-ui-transparent-hover;
+        }
+        &:active {
+            background-color: $color-ui-transparent-active;
         }
     }    
 }
