@@ -4,7 +4,8 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     entry: './src/index.jsx',
     output: {
-        path: path.resolve(__dirname, 'dev'),
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: '/',
         filename: '[name].bundle.js',
         chunkFilename: '[name].bundle.js',
     },
@@ -26,7 +27,11 @@ module.exports = {
     devServer: {
         compress: true,
         port: 3000,
-        open: true,
+        open: true,        
+        static: {
+            directory:path.resolve(__dirname, './src/img'),
+            publicPath:'/src/img'
+        },
     },    
     optimization: {
         splitChunks: {
@@ -50,6 +55,7 @@ module.exports = {
                     test:/\.tsx?$/i,
                     use: ['babel-loader', 'ts-loader'],
                 },
+                
                 {
                     test:/\.scss$/i,
                     use: [
@@ -57,6 +63,7 @@ module.exports = {
                         {
                         loader: 'css-loader',
                         options: {
+                            url: false,
                             modules: {
                                 mode: 'local',
                                 localIdentName: '[name]_[local]_[hash:base64:5]',
@@ -70,13 +77,15 @@ module.exports = {
                 {
                     test:/\.(gif|png|jpe?g|svg)$/i,
                     use: [
-                            {
-                                loader: 'file-loader',
-                                options: {
-                                    name: 'img/[name].[ext]'
-                                },
+                        {
+                          loader: 'file-loader',
+                          options: {
+                              name: '[name].[ext]',
+                              outputPath: 'images/',
+                              publicPath: 'images/'
+                          }
                         },
-                    ],
+                      ],
                 }
             ]
     },

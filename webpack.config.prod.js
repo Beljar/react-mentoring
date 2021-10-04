@@ -17,7 +17,10 @@ module.exports = {
             '.ts',
             '.json',
             '.scss',
-        ]
+        ],
+        alias: {
+            src: path.resolve(__dirname, 'src'),
+        }
     },
     optimization: {
         splitChunks: {
@@ -46,7 +49,7 @@ module.exports = {
                     use: [
                         {loader: 'style-loader'},
                         {
-                        loader: 'css-loader',
+                        loader: 'css-loader',                        
                         options: {
                             modules: {
                                 mode: 'local',

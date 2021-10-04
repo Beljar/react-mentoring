@@ -7,8 +7,8 @@ import scss from './styles.scss';
 
 type Props = {    
     type: ButtonType,
-    width: number | 'auto',
-    height: number | 'auto',
+    width?: number | 'auto',
+    height?: number | 'auto',
     className?: string,
     loading?: boolean,
 }
