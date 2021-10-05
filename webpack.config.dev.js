@@ -4,7 +4,6 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     entry: './src/index.jsx',
     output: {
-        path: path.resolve(__dirname, 'dist'),
         publicPath: '/',
         filename: '[name].bundle.js',
         chunkFilename: '[name].bundle.js',
@@ -55,7 +54,33 @@ module.exports = {
                     test:/\.tsx?$/i,
                     use: ['babel-loader', 'ts-loader'],
                 },
-                
+                {
+                    test:/\.(gif|png|jpe?g|svg|ttf)$/i,
+                    dependency: { not: ['url'] },
+                    use: [
+                        {
+                          loader: 'file-loader',
+                          options: {
+                              name: '[name].[ext]',
+                              publicPath: '/'
+                          }
+                        },
+                      ],
+                      type: 'javascript/auto',
+                },
+                {
+                    test:/\.(gif|png|jpe?g|svg|ttf)$/i,
+                    dependency: { not: ['url'] },
+                    use: [
+                        {
+                          loader: 'url-loader',
+                          options: {
+                            limit: 8192,
+                          },
+                        },
+                      ],
+                      type: 'javascript/auto',
+                },
                 {
                     test:/\.scss$/i,
                     use: [
@@ -63,7 +88,6 @@ module.exports = {
                         {
                         loader: 'css-loader',
                         options: {
-                            url: false,
                             modules: {
                                 mode: 'local',
                                 localIdentName: '[name]_[local]_[hash:base64:5]',
@@ -74,19 +98,7 @@ module.exports = {
                         {loader: 'sass-loader'},
                     ]
                 },
-                {
-                    test:/\.(gif|png|jpe?g|svg)$/i,
-                    use: [
-                        {
-                          loader: 'file-loader',
-                          options: {
-                              name: '[name].[ext]',
-                              outputPath: 'images/',
-                              publicPath: 'images/'
-                          }
-                        },
-                      ],
-                }
+
             ]
     },
 
