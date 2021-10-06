@@ -2,13 +2,13 @@ import * as React from 'react';
 
 import { Button } from '../ui/Button';
 import { Input } from '../ui/Input/Input';
-import { ContentWrapper } from '../ContentWrapper';
+
 import ImgBg from 'src/img/header-bg.jpg';
 
 import scss from './styles.scss';
 
 
-export const Header: React.FC = () => (<ContentWrapper className={scss.contentWrapper}>
+export const Header: React.FC = () => (
     <header className={scss.header}>
             <div className={scss.headerBg}></div>
             <div className={scss.headerImgWrapper}>
@@ -26,4 +26,4 @@ export const Header: React.FC = () => (<ContentWrapper className={scss.contentWr
                 </div>
             </div>
         </header>
-</ContentWrapper>)
+)

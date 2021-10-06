@@ -1,11 +1,7 @@
 @import 'src/styles';
 
-
-.content-wrapper {
-    position: relative;
-}
-
 .header {
+    position: relative;
     width: 100%;
     color: $color-text;
     .header-img {

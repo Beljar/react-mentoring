@@ -28,8 +28,8 @@ module.exports = {
         port: 3000,
         open: true,        
         static: {
-            directory:path.resolve(__dirname, './src/img'),
-            publicPath:'/src/img'
+            directory:path.resolve(__dirname, './public/assets'),
+            publicPath:'/assets'
         },
     },    
     optimization: {
