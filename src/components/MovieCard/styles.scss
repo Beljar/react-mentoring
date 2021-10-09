@@ -1,0 +1,42 @@
+@import 'src/styles';
+
+.film-card {
+    width: 322px;
+    height: 524;
+    .cover {
+        width: 100%;
+        height: 455px;
+        object-fit: cover;
+    }
+    .title-block {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .title {
+        margin: 0px;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+        color: $color-text-header;
+    }
+    .genres {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+        color: $color-text-desc;
+    }
+    .year {
+        width: 66px;
+        height: 26px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid $color-border;
+        border-radius: $radius;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+        color: $color-text-header;
+    }
+}

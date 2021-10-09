@@ -6,7 +6,7 @@ import scss from './styles.scss';
 
 type Props = {
     width?: number,
-    children?: React.ReactElement,
+    children?: React.ReactNode,
     className?: string,
 }
 
