@@ -5,5 +5,8 @@ export type Film = {
     title: string;
     genres: Genre[];
     year: number;
-    coverUrl: string;
+    duration: number;
+    rating: number;
+    coverUrl?: string;
+    description?: string;    
 }

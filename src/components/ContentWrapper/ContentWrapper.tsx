@@ -10,4 +10,4 @@ type Props = {
     className?: string,
 }
 
-export const ContentWrapper: React.FC<Props> = ({ width = 1080, children, className }: Props) => <div style={{width: `${width}px`}} className={cn(scss.contentWrapper, className)}>{children}</div>
+export const ContentWrapper: React.FC<Props> = ({ width = 1200, children, className }: Props) => <div style={{width: `${width}px`}} className={cn(scss.contentWrapper, className)}>{children}</div>

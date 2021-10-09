@@ -27,14 +27,20 @@
         height: 396px;
         background-color: $color-black;
     }
-    .header-content {    
+    .header-content-wrapper {
         position: absolute;
         top: 0;
-        margin: 20px 60px;
+        width: 100%;
+        padding: 20px 60px;
+        box-sizing: border-box;
+    }
+    .row {    
+        display: flex;
     }
     .search-block {
         width: 960px;
         display: flex;
+        flex-direction: column;
         margin: auto;
     }
     .add-block {
