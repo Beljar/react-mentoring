@@ -55,7 +55,7 @@ module.exports = {
                     use: ['babel-loader', 'ts-loader'],
                 },
                 {
-                    test:/\.(gif|png|jpe?g|svg|ttf)$/i,
+                    test:/\.(gif|png|jpe?g|ttf)$/i,
                     dependency: { not: ['url'] },
                     use: [
                         {
@@ -69,7 +69,7 @@ module.exports = {
                       type: 'javascript/auto',
                 },
                 {
-                    test:/\.(gif|png|jpe?g|svg|ttf)$/i,
+                    test:/\.(gif|png|jpe?g|ttf)$/i,
                     dependency: { not: ['url'] },
                     use: [
                         {
@@ -80,6 +80,10 @@ module.exports = {
                         },
                       ],
                       type: 'javascript/auto',
+                },
+                {
+                    test: /\.svg$/,
+                    use: ['@svgr/webpack'],
                 },
                 {
                     test:/\.scss$/i,

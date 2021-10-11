@@ -1,0 +1,18 @@
+@import 'src/styles';
+
+.control {
+    display: flex;
+    background-color: none;
+    border: none;
+}
+
+.value {
+    display: flex;
+    align-items: center;
+    color: $color-text;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
