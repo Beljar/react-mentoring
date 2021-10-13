@@ -1,8 +1,14 @@
 @import 'src/styles';
 
 .film-card {
+    position: relative;
     width: 322px;
     height: 524;
+    .menu {
+        position: absolute;
+        top: 12px;
+        right: 14px;
+    }
     .cover {
         width: 100%;
         height: 455px;
