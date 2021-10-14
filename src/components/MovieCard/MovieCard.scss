@@ -5,6 +5,7 @@
     width: 322px;
     height: 524;
     .menu {
+        display: block;
         position: absolute;
         top: 12px;
         right: 14px;
@@ -44,5 +45,11 @@
         font-size: 14px;
         line-height: 17px;
         color: $color-text-title;
+    }
+    &.menu-closed > .menu {
+        display: none;
+    }
+    &:hover .menu {
+        display: block;
     }
 }

@@ -10,11 +10,20 @@ import scss from './styles.scss';
 type Props = {
     className: string;
     opened?: boolean;
+    onExpand?: () => void;
+    onCollapse?: () => void;
 }
 
-export const FilmMenu: React.FC<Props> = ({ className, opened }) => {
+export const FilmMenu: React.FC<Props> = ({ className, opened, onExpand, onCollapse }) => {
     const [expanded, setExpanded] = React.useState(false);
     React.useEffect(() => {setExpanded(opened)}, [opened]);
+    React.useEffect(() => {
+        if (expanded) {
+            onExpand?.()
+        } else {
+            onCollapse?.()
+        }
+    }, [expanded])
     const menuRef: React.RefObject<HTMLDivElement> = React.useRef();
     const clickListener = React.useCallback((e) => {
         if(!menuRef?.current?.contains(e.target)) {
