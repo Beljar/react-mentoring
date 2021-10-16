@@ -3,6 +3,7 @@ import { GenresFilter } from 'src/components/GenresFilter';
 
 import { MovieCardsLst } from 'src/components/MovieCardsList/MovieCardsList';
 import { Sorter } from 'src/components/Sorter';
+import { Separator } from 'src/components/ui/Separator';
 
 import scss from './styles.scss';
 
@@ -13,7 +14,7 @@ export const Content = () => {
             <GenresFilter activeFilterKey={activeFilterKey} onChange={setActiveFilterKey} />
             <Sorter />
         </div>
+        <Separator />
         <MovieCardsLst />
-
     </main>
 }
