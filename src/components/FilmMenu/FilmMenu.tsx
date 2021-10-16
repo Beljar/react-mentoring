@@ -38,6 +38,6 @@ export const FilmMenu: React.FC<Props> = ({ className, opened, onExpand, onColla
     }, [expanded])
     return <div ref={menuRef} className={className}>
         <MenuOpenButton className={cn({[scss.hidden]: expanded})} onClick={() => {setExpanded(true)}}/>
-        <ContextMenu className={cn({[scss.hidden]: !expanded})}  options={FILM_MENU_ITEMS.map((item) => ({label: item.name.toUpperCase(), value: item.id}))} />
+        <ContextMenu className={cn({[scss.hidden]: !expanded})}  options={FILM_MENU_ITEMS.map((item) => ({label: item.name.toUpperCase(), value: item.id}))} onCollapse={() => setExpanded(false)} onClick={(id) => {}}/>
     </div>
 }

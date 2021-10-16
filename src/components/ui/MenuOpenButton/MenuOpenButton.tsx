@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cn from 'classnames';
 
-import scss from './styles.scss';
+import scss from './MenuOpenButton.scss';
 
 type Props = {
     onClick?: () => void;
