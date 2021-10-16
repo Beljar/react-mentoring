@@ -2,6 +2,7 @@ import * as React from 'react';
 import { GenresFilter } from 'src/components/GenresFilter';
 
 import { MovieCardsLst } from 'src/components/MovieCardsList/MovieCardsList';
+import { MovieCount } from 'src/components/MovieCount';
 import { Sorter } from 'src/components/Sorter';
 import { Separator } from 'src/components/ui/Separator';
 
@@ -15,6 +16,7 @@ export const Content = () => {
             <Sorter />
         </div>
         <Separator />
+        <MovieCount count={39} />
         <MovieCardsLst />
     </main>
 }
