@@ -17,7 +17,7 @@ export const Search: React.FC = () => (
                     <div className={scss.searchBlock}>
                     <h1>FIND YOUR MOVIE</h1>
                     <div className={scss.row}>
-                        <Input />
+                        <Input placeholder='What do you want to watch?' />
                         <Button className={scss.searchBtn} width={223} height={57} type='filled'>Search</Button>
                     </div>
                     </div>
