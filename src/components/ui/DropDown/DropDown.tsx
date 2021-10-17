@@ -1,4 +1,5 @@
 import * as React from 'react';
+import cn from 'classnames';
 import Select, { components as Components } from "react-select";
 
 import IconDropDown from '../Icons/IconArrowDownFilled.svg';
@@ -22,6 +23,16 @@ const DropDown: React.FC<Props> = ({ value, options, className, onChange }) => {
     {...props}
     className={scss.control}
     />)
+    const MenuList = (props) => (<Components.MenuList 
+        {...props}
+        className={scss.menu}
+        />)
+    const Option = (props) => {
+        console.log(props)
+        return <Components.Option 
+        {...props}
+        className={cn(scss.option, {[scss.selected]: props.isSelected})}
+        />}
     const SingleValue = (props) => (<Components.SingleValue 
         {...props}
         className={scss.value}
@@ -43,6 +54,8 @@ const DropDown: React.FC<Props> = ({ value, options, className, onChange }) => {
     value={value}
     options={options}
     components={{
+        Option,
+        MenuList,
         Control,
         SingleValue,
         ValueContainer,
