@@ -3,12 +3,10 @@ import { Header } from 'src/pages/Main/Header';
 import { Search } from './Search';
 import { PageWrapper } from 'src/components/PageWrapper';
 
-import { Button } from 'src/components/ui/Button';
 import { Content } from './Content/Content';
 import { Footer } from './Footer/Footer';
 import { ErrorBoundary } from 'src/components/ErrorBoundary';
-import { FormItem } from 'src/components/FormItem';
-import { Input } from 'src/components/ui/Input';
+
 
 export const Main:React.FC = () => (<PageWrapper>
     <Header />
@@ -17,4 +15,5 @@ export const Main:React.FC = () => (<PageWrapper>
        <Content /> 
     </ErrorBoundary>    
     <Footer />
-    </PageWrapper>)
+    </PageWrapper>
+    )
