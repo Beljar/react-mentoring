@@ -3,6 +3,7 @@
 .input {
     width: 100%;
     padding: 16px 19px;
+    box-sizing: border-box;
     border: none;
     border-radius: 4px;
     outline: none;
@@ -10,6 +11,9 @@
     color: $color-text-input;
     font-size: 20px;
     line-height: 24px;
+    &.filled {
+        color: $color-text;
+    }
     &:hover {
         background-color: $color-input-transparent-hover;
     }
