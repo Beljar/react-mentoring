@@ -9,10 +9,10 @@ import { Separator } from 'src/components/ui/Separator';
 import scss from './styles.scss';
 
 export const Content = () => {
-    const [activeFilterKey, setActiveFilterKey] = React.useState('all');
+    const [activeFilterKey, setActiveFilterKey] = React.useState<string | number>('all');
     return <main className={scss.main}>
         <div className={scss.filterPanel}>
-            <GenresFilter activeFilterKey={activeFilterKey} onChange={setActiveFilterKey} />
+            <GenresFilter activeFilterKey={activeFilterKey} onChange={(filterOption) => setActiveFilterKey(filterOption.key)} />
             <Sorter />
         </div>
         <Separator />

@@ -1,30 +1,16 @@
-import { Film } from "src/entities/film";
+import { Movie } from "src/entities/film";
 import { FilterOptionType } from "src/entities/filterOption";
+import { GENRES_MAIN } from "src/entities/genre";
 
-export const GENRE_FILTER_OPTIONS: FilterOptionType<Film>[] = [
+export const GENRE_FILTER_OPTIONS: FilterOptionType<Movie>[] = [
     {
         key: 'all',
         display: 'ALL',
-        rule: (films: Film[]) => films,
+        rule: (films: Movie[]) => films,
     },
-    {
-        key: 'documentary',
-        display: 'DOCUMENTARY',
-        rule: (films: Film[]) => films.filter((film) => 'documentary' in film.genres),
-    },
-    {
-        key: 'comedy',
-        display: 'COMEDY',
-        rule: (films: Film[]) => films.filter((film) => 'comedy' in film.genres),
-    },
-    {
-        key: 'horror',
-        display: 'HORROR',
-        rule: (films: Film[]) => films.filter((film) => 'horror' in film.genres),
-    },
-    {
-        key: 'crime',
-        display: 'CRIME',
-        rule: (films: Film[]) => films.filter((film) => 'crime' in film.genres),
-    },
+    ...GENRES_MAIN.map((genre) => ({
+        key: genre.nameShort,
+        display: genre.nameFull || genre.nameShort.toUpperCase(),
+        rule: (films: Movie[]) => films.filter((film) => genre.id in film.genres),
+    })),
 ]

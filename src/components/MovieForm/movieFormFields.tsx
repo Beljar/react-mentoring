@@ -1,44 +1,47 @@
 import * as React from "react";
-import { Film } from "src/entities/film";
+import { Movie } from "src/entities/film";
+import { GenreSelector } from "../GenreSelector";
+import DropDown from "../ui/DropDown/DropDown";
 import { FormFieldType } from "../ui/Form";
 import { Input } from "../ui/Input";
 
-export const MOVIE_FORM_FIELDS: FormFieldType<keyof Film | "release_date" | "url" | "genre">[] = [
+export const MOVIE_FORM_FIELDS: FormFieldType<keyof Movie>[] = [
     {
         key: "title",
-        drawControl: () => <Input id="title" />,
+        drawControl: (values, onChange) => <Input id="title" value={values["title"]} onChange={onChange} />,
         width: 525,
     },
     {
-        key: "release_date",
+        key: "releaseDate",
         label: "RELEASE DATE",
-        drawControl: () => <Input id="release_date" />,
+        drawControl: (values, onChange) => <Input id="release_date" onChange={onChange} />,
         width: 301,
     },
     {
         key: "url",
         label: "MOVIE URL",
-        drawControl: () => <Input id="url" />,
+        drawControl: (values, onChange) => <Input id="url" onChange={onChange} />,
         width: 525,
     },
     {
         key: "rating",
-        drawControl: () => <Input id="title" />,
+        drawControl: (values, onChange) => <Input id="title" onChange={onChange} />,
         width: 301,
-    },    {
-        key: "genre",
-        drawControl: () => <Input id="title" />,
+    },    
+    {
+        key: "genres",
+        drawControl: (values, onChange) => <GenreSelector />,
         width: 525,
     },
     {
         key: "duration",
         label: "RUNTIME",
-        drawControl: () => <Input id="title" />,
+        drawControl: (values, onChange) => <Input id="title" onChange={onChange} />,
         width: 301,
     },
     {
         key: "description",
         label: "OVERVIEW",
-        drawControl: () => <Input id="title" />,
+        drawControl: (values, onChange) => <Input id="title" onChange={onChange} />,
     },
 ]

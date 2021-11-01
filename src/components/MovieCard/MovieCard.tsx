@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { Film } from 'src/entities/film';
+import { Movie } from 'src/entities/film';
 import cn from 'classnames';
 
 import scss from './MovieCard.scss';
 import { FilmMenu } from '../FilmMenu';
+import { GENRES } from 'src/entities/genre';
 
 type Props = {
-    film: Film;
+    film: Movie;
     className?: string;
 }
 
@@ -19,5 +20,9 @@ export const MovieCard: React.FC<Props> = ({ film, className }: Props) => {
         <h3 className={scss.title}>{film.title}</h3>
         <div className={scss.year}>{film.year}</div>
     </div>
-    <span className={scss.genres}>{film.genres.join(', ')}</span>
+    <span className={scss.genres}>{film.genres.map((genreId) => {
+        const genreObj = GENRES.find((genre) => genre.id === genreId)
+        return genreObj.nameFull || genreObj.nameShort[0].toUpperCase() + genreObj.nameShort.substring(1);
+    }).join(', ')
+    }</span>
 </div>}

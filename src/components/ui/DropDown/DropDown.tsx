@@ -5,6 +5,7 @@ import Select, { components as Components } from "react-select";
 import IconDropDown from '../Icons/IconArrowDownFilled.svg';
 
 import scss from './styles.scss';
+import { DropDownType } from './dropDownTypes';
 
 type Option<T> = {
     label: string;
@@ -12,27 +13,34 @@ type Option<T> = {
 }
 
 type Props = {
-    value: Option<string>;
-    options: Option<string>[];
+    value: Option<string | number> | Option<string | number>[] | null;
+    options: Option<string | number>[];
     className?: string;
-    onChange: (option: Option<string>) => void;
+    useCheckboxes?: boolean;
+    isMulti?: boolean;
+    type?: DropDownType;
+    onChange: (option: Option<string | number> | Option<string | number>[]) => void;
 }
 
-const DropDown: React.FC<Props> = ({ value, options, className, onChange }) => {
+const DropDown: React.FC<Props> = ({ value, options, className, useCheckboxes = false, isMulti = false, type = 'transparent', onChange }) => {
     const Control = (props) => (<Components.Control 
     {...props}
-    className={scss.control}
+    className={cn(scss.control, scss[type])}
     />)
     const MenuList = (props) => (<Components.MenuList 
         {...props}
         className={scss.menu}
         />)
     const Option = (props) => {
-        console.log(props)
         return <Components.Option 
         {...props}
         className={cn(scss.option, {[scss.selected]: props.isSelected})}
-        />}
+        >{useCheckboxes && <><input
+        type="checkbox"
+        checked={props.isSelected}
+        onChange={() => null}
+      />{" "}</>}
+      <label>{props.label}</label></Components.Option>}
     const SingleValue = (props) => (<Components.SingleValue 
         {...props}
         className={scss.value}
@@ -53,6 +61,7 @@ const DropDown: React.FC<Props> = ({ value, options, className, onChange }) => {
     isSearchable={false}
     value={value}
     options={options}
+    isMulti={isMulti}
     components={{
         Option,
         MenuList,

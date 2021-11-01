@@ -1,5 +1,5 @@
 export type FilterOptionType<T> = {
-    key: string,
+    key: string | number,
     display: string,
     rule: (data: T[]) => T[],
 }

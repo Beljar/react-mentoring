@@ -1,10 +1,10 @@
-import { Film } from ".";
+import { Movie } from ".";
 
-export const FILMS: Film[] = [
+export const FILMS: Movie[] = [
     {
         id: '1',
         title: 'Pulp Fiction',
-        genres: ['action'],
+        genres: [5],
         year: 2004,
         coverUrl: '/assets/covers/pulp_fiction.jpg',
         rating: 8.9,
@@ -13,7 +13,7 @@ export const FILMS: Film[] = [
     {
         id: '2',
         title: 'Bohemian Rhapsody',
-        genres: ['drama', 'biography', 'music'],
+        genres: [6, 7, 8],
         year: 2003,
         coverUrl: '/assets/covers/bohemian_rhapsodia.jpg',
         rating: 8.9,
@@ -22,7 +22,7 @@ export const FILMS: Film[] = [
     {
         id: '3',
         title: 'Kill Bill: Vol 2',
-        genres: ['oscar'],
+        genres: [9],
         year: 1994,
         coverUrl: '/assets/covers/kill_bill.jpg',
         rating: 8.9,
@@ -31,7 +31,7 @@ export const FILMS: Film[] = [
     {
         id: '4',
         title: 'Avengers: War of Infinity',
-        genres: ['action'],
+        genres: [5],
         year: 2004,
         coverUrl: '/assets/covers/avengers.jpg',
         rating: 8.9,
@@ -40,7 +40,7 @@ export const FILMS: Film[] = [
     {
         id: '5',
         title: 'Inception',
-        genres: ['action'],
+        genres: [5],
         year: 2003,
         coverUrl: '/assets/covers/inception.jpg',
         rating: 8.9,
@@ -49,7 +49,7 @@ export const FILMS: Film[] = [
     {
         id: '6',
         title: 'Reservoir dogs',
-        genres: ['oscar'],
+        genres: [9],
         year: 1994,
         coverUrl: '/assets/covers/reservoir_dogs.jpg',
         rating: 8.9,

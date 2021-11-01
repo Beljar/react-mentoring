@@ -1,10 +1,15 @@
 @import 'src/styles';
 
 .control {
-    display: flex;
-    background-color: none;
+    display: flex;  
+    align-items: center;  
     border: none;
     cursor: pointer;
+    &.ui{
+        height: 57px;
+        background-color: $color-input-transparent;
+        border-radius: 4px;
+    }
 }
 
 .value {

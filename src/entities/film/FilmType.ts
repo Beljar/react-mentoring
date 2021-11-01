@@ -1,12 +1,14 @@
-import { Genre } from "../genre/GenreType";
+import { GenreName } from "../genre/GenreType";
 
-export type Film = {
+export type Movie = {
     id: string;
     title: string;
-    genres: Genre[];
+    genres: number[];
     year: number;
+    releaseDate?: string;
     duration: number;
     rating: number;
     coverUrl?: string;
+    url?: string;
     description?: string;    
 }

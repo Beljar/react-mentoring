@@ -4,5 +4,5 @@ export type FormFieldType<T = string> = {
     label?: string;
     key: T;
     width?: number;
-    drawControl: () => React.ReactElement;
+    drawControl: (values: object, onChange: (value) => void) => React.ReactElement;
 }
