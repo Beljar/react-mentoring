@@ -23,6 +23,20 @@
             background-color: $color-main-active;
         }
     }   
+    &.outlined {
+        color: $color-main;
+        border: 2px solid $color-main;
+        background-color: none;
+        transition:  background-color 0.3s ease, color 0.3s ease;
+        &:hover {
+            color: $color-text;
+            background-color: $color-main-hover;
+        }
+        &:active {
+            color: $color-text;
+            background-color: $color-main-active;
+        }
+    }   
     &.transparent {
         font-weight: 600;
         color: $color-main;
