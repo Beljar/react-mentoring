@@ -5,25 +5,29 @@ import IconCloseLarge from 'src/components/ui/Icons/IconCloseLarge.svg';
 
 import scss from './modal.scss';
 
-export const Modal: React.FC = ({ children }) => {
-    const [visible, setVisible] = React.useState(true);
+type Props = {
+    isOpened: boolean;
+    onClose: () => void;
+}
+
+export const Modal: React.FC<Props> = ({ children, isOpened, onClose }) => {
     const container = React.useRef(document.createElement('div'));
     React.useEffect(() => {
-        document.body.appendChild(container.current);
+        document.querySelector('#main').appendChild(container.current);
         return () => {document.removeChild(container.current)};
     }, [])
     const modal = <div className={scss.overlay} onClick={(e) => 
     {
     if(e.target === e.currentTarget){
-        setVisible(false);
+        onClose();
     }
     }}>
         <div className={scss.window}>
             <div className={scss.topBar}>
-                <button onClick={() => {setVisible(false)}}><IconCloseLarge/></button>
+                <button onClick={() => {onClose()}}><IconCloseLarge/></button>
                 </div>
             {children}
         </div>
     </div>
-    return visible ? ReactDOM.createPortal(modal, container.current) : null;
+    return isOpened ? ReactDOM.createPortal(modal, container.current) : null;
 }

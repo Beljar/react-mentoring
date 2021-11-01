@@ -11,8 +11,9 @@ type Props = {
     height?: number | 'auto',
     className?: string,
     loading?: boolean,
+    onClick?: () => void;
 }
 
-export const Button:React.FC<Props> = ({ className, type, width, height, loading, children }) => {
-    return <button style={{width: `${width}px`, height: `${height}px`}} className={cn(className, scss.button, scss[type])}>{children}</button>
+export const Button:React.FC<Props> = ({ className, type, width, height, loading, onClick, children }) => {
+    return <button style={{width: `${width}px`, height: `${height}px`}} className={cn(className, scss.button, scss[type])} onClick={() => {onClick?.()}}>{children}</button>
 }

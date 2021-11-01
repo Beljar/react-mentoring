@@ -7,13 +7,16 @@ import { Content } from './Content/Content';
 import { Footer } from './Footer/Footer';
 import { ErrorBoundary } from 'src/components/ErrorBoundary';
 
+import scss from './main.scss';
 
-export const Main:React.FC = () => (<PageWrapper>
-    <Header />
-    <Search/>
-    <ErrorBoundary>
-       <Content /> 
-    </ErrorBoundary>    
-    <Footer />
-    </PageWrapper>
+export const Main:React.FC = () => (<div id='main' className={scss.main}>
+   <PageWrapper>
+       <Header />
+       <Search/>
+       <ErrorBoundary>
+          <Content />
+       </ErrorBoundary>
+       <Footer />
+       </PageWrapper>
+</div>
     )

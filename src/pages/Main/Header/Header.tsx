@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { AddMovieButton } from 'src/components/AddMovieButton/AddMovieButton';
 import { Logo } from 'src/components/Logo/Logo';
 
 import { Button } from 'src/components/ui/Button';
@@ -10,6 +11,6 @@ import scss from './styles.scss';
 export const Header: React.FC = () => (
     <header className={scss.header}>
         <Logo />
-        <Button width={177} height={46} type='transparent'>+ ADD MOVIE</Button>
+        <AddMovieButton />
     </header>
 )
