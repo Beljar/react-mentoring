@@ -28,14 +28,22 @@
 }
 
 .option {
+    padding: 9px 18px;
     color: $color-text!important;
     &.selected {
         background-color: $color-main;
     }
+    &.selected:hover {
+        background-color: $color-main-active;
+    }
     &:active {
         background-color: $color-main-active!important;
     }
-    &:hover {
+    &:not(.selected):hover {
         background-color: $color-secondary;
     }
+}
+
+.placeholder {
+    width: 100%;
 }
