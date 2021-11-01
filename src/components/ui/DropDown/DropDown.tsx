@@ -28,7 +28,7 @@ const DropDown: React.FC<Props> = ({ value, options, className, useCheckboxes = 
     {...props}
     className={cn(scss.control, scss[type])}>
             <>
-                {isMulti && 
+                {isMulti && props.hasValue &&
                 <Components.Placeholder className={scss.placeholder} {...{...props, hasValue: false, children: placeholder}}/>}
                 {props.children}
             </>

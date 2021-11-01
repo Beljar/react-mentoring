@@ -23,7 +23,7 @@ export const Form: React.FC<Props> = ({ title, fields, className, initialValues 
         e.preventDefault();
         }}>
         <h1 className={scss.title}>{title}</h1>
-        <div className={scss.fields}>{fields.map((field) => <FormItem key={field.key} id={field.key} label={field.label || field.key.toUpperCase()} width={field.width}>{field.drawControl(values, (value) => {setValues({...values, [field.key]: value})})}</FormItem>)}</div>
+        <div className={scss.fields}>{fields.map((field) => <FormItem key={field.key} id={field.key} label={field.label || field.key.toUpperCase()} width={field.width}>{field.drawControl(values[field.key], (value) => {setValues({...values, [field.key]: value})})}</FormItem>)}</div>
         <ButtonBlock className={scss.buttonBlock} />
     </form>
 }
