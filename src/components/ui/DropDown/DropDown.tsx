@@ -20,10 +20,11 @@ type Props = {
     isMulti?: boolean;
     type?: DropDownType;
     placeholder?: string;
+    closeMenuOnSelect?: boolean;
     onChange: (option: Option<string | number> | Option<string | number>[]) => void;
 }
 
-const DropDown: React.FC<Props> = ({ value, options, className, useCheckboxes = false, isMulti = false, placeholder, type = 'transparent', onChange }) => {
+const DropDown: React.FC<Props> = ({ value, options, className, useCheckboxes = false, isMulti = false, placeholder, closeMenuOnSelect, type = 'transparent', onChange }) => {
     const Control = (props) => (<Components.Control 
     {...props}
     className={cn(scss.control, scss[type])}>
@@ -71,6 +72,7 @@ const DropDown: React.FC<Props> = ({ value, options, className, useCheckboxes = 
     isMulti={isMulti}
     isClearable={false}
     placeholder={placeholder}
+    closeMenuOnSelect={closeMenuOnSelect}
     components={{
         Option,
         MenuList,

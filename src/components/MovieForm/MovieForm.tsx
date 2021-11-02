@@ -5,17 +5,22 @@ import { MOVIE_FORM_FIELDS } from './movieFormFields';
 import scss from './movieForm.scss';
 import { Movie } from 'src/entities/film';
 
-const initialData = {
+const emptyMovie: Movie = {
     id: '',
     title: '',
     genres: [],
     releaseDate: '',
-    duration: '',
-    rating: '',
+    duration: null,
+    rating: null,
+    year: null,
     url: '',
     description: '',
 }
 
-export const MovieForm: React.FC = () => {
-    return <Form className={scss.form} title='ADD MOVIE' fields={MOVIE_FORM_FIELDS} initialValues={initialData} />
+type Props = {
+    movie?: Movie;
+}
+
+export const MovieForm: React.FC<Props> = ({ movie = emptyMovie }) => {
+    return <Form className={scss.form} title='ADD MOVIE' fields={MOVIE_FORM_FIELDS} initialValues={movie} />
 }

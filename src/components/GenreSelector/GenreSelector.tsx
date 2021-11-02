@@ -19,6 +19,7 @@ export const GenreSelector: React.FC<Props> = ({ values, onChange }) => {
     useCheckboxes 
     isMulti 
     placeholder='Select genre' 
-    options={GENRES_MAIN.map((genre) => ({label: genre.nameShort[0].toUpperCase() + genre.nameShort.substring(1), value: genre.id}))} 
+    options={GENRES.map((genre) => ({label: genre.nameShort[0].toUpperCase() + genre.nameShort.substring(1), value: genre.id}))} 
+    closeMenuOnSelect={false}
     onChange={(option: Option<number>[]) => {onChange(option.map((item) => item.value))} } />
 }

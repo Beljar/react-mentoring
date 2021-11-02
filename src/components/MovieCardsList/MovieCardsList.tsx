@@ -5,5 +5,5 @@ import { MovieCard } from '../MovieCard';
 import scss from './styles.scss';
 
 export const MovieCardsLst = () => {
-    return <div className={scss.movieList}>{FILMS.map((film) => <MovieCard className={scss.card} key={film.id} film={film}/>)}</div>
+    return <div className={scss.movieList}>{FILMS.map((movie) => <MovieCard className={scss.card} key={movie.id} movie={movie}/>)}</div>
 }
