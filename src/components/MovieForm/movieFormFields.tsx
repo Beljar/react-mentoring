@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Movie } from "src/entities/film";
 import { GenreSelector } from "../GenreSelector";
+import { DateSelect } from "../ui/DateSelect/DateSelect";
 import DropDown from "../ui/DropDown/DropDown";
 import { FormFieldType } from "../ui/Form";
 import { Input } from "../ui/Input";
@@ -14,7 +15,7 @@ export const MOVIE_FORM_FIELDS: FormFieldType<keyof Movie>[] = [
     {
         key: "releaseDate",
         label: "RELEASE DATE",
-        drawControl: (value, onChange) => <Input id="release_date" placeholder='Select Date' value={value as string} onChange={onChange} />,
+        drawControl: (value, onChange) => <DateSelect placeholder='Select Date'/>,
         width: 301,
     },
     {

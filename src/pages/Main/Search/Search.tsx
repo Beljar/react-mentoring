@@ -6,7 +6,9 @@ import { Input } from 'src/components/ui/Input/Input';
 import scss from './styles.scss';
 
 
-export const Search: React.FC = () => (
+export const Search: React.FC = () => {
+    const [searchString, setSearchString] = React.useState('');
+    return (
     <div className={scss.search}>
             <div className={scss.searchBg}></div>
             <div className={scss.searchImgWrapper}>
@@ -17,11 +19,11 @@ export const Search: React.FC = () => (
                     <div className={scss.searchBlock}>
                     <h1>FIND YOUR MOVIE</h1>
                     <div className={scss.row}>
-                        <Input id={'search'} placeholder='What do you want to watch?' />
+                        <Input id={'search'} value={searchString} placeholder='What do you want to watch?' onChange={(value) => setSearchString(value)}/>
                         <Button className={scss.searchBtn} width={223} height={57} type='filled'>Search</Button>
                     </div>
                     </div>
                 </div>
             </div>
         </div>
-)
+)}
