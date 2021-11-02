@@ -6,7 +6,7 @@ import { Modal } from '../ui/Modal';
 export const AddMovieButton = () => {
     const [isOpened, setIsOpened] = React.useState(false);
     return <>
-    {<Modal isOpened={isOpened} onClose={() => setIsOpened(false)}><MovieForm /></Modal>}
+    {<Modal isOpened={isOpened} onClose={() => setIsOpened(false)}><MovieForm title='ADD MOVIE'/></Modal>}
     <Button width={177} height={46} type='transparent' onClick={() => {setIsOpened(true)}}>+ ADD MOVIE</Button>
     </>
 }

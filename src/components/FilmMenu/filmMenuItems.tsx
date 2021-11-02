@@ -7,7 +7,7 @@ export const FILM_MENU_ITEMS = [
         id: 1,
         name: 'edit' ,
         action: (movie, setModal) => {
-            setModal(<Modal isOpened={true} onClose={() => setModal(null)}><MovieForm movie={movie}/></Modal>)
+            setModal(<Modal isOpened={true} onClose={() => setModal(null)}><MovieForm movie={movie} title='EDIT MOVIE'/></Modal>)
             window.scrollTo(0, 0)
         },
     },

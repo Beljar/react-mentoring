@@ -18,9 +18,10 @@ const emptyMovie: Movie = {
 }
 
 type Props = {
+    title: string;
     movie?: Movie;
 }
 
-export const MovieForm: React.FC<Props> = ({ movie = emptyMovie }) => {
-    return <Form className={scss.form} title='ADD MOVIE' fields={MOVIE_FORM_FIELDS} initialValues={movie} />
+export const MovieForm: React.FC<Props> = ({ movie = emptyMovie, title }) => {
+    return <Form className={scss.form} title={title} fields={MOVIE_FORM_FIELDS} initialValues={movie} />
 }
