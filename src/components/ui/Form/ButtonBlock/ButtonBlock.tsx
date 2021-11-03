@@ -12,7 +12,7 @@ type Props = {
 
 export const ButtonBlock: React.FC<Props> = ({ className, onSubmit }) => {
     return <div className={cn(scss.buttonBlock, className)}>
-        <Button type={'outlined'} width={182} height={57}>Reset</Button>
-        <Button type={'filled'} width={182} height={57} onClick={() => onSubmit?.()}>Submit</Button>
+        <Button type={'outlined'} htmlType={'reset'} width={182} height={57}>Reset</Button>
+        <Button type={'filled'} htmlType={'submit'} width={182} height={57} onClick={() => onSubmit?.()}>Submit</Button>
     </div>
 }

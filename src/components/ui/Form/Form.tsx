@@ -37,11 +37,16 @@ export const Form: <Entity extends object>(props: Props<Entity>) => JSX.Element 
         const error = getError(values[field.key], field.rules);
         return error ? { ...acc, [field.key]: error } : acc;
     }, null);
-    return <form className={className} onSubmit={(e: React.SyntheticEvent) => {
-        e.preventDefault();
-        setErrors(getErrors());
-        !errors && onSubmit(values);
-    }}>
+    return <form className={className}
+        onSubmit={(e: React.SyntheticEvent) => {
+            e.preventDefault();
+            setErrors(getErrors());
+            !errors && onSubmit(values);
+        }}
+        onReset={() => {
+            setValues(initialValues);
+            setErrors({});
+            }}>
         <h1 className={scss.title}>{title}</h1>
         <div className={scss.fields}>
             {fields.map((field) =>
