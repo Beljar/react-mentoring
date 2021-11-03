@@ -12,7 +12,6 @@ const emptyMovie: Movie = {
     releaseDate: '',
     duration: null,
     rating: null,
-    year: null,
     url: '',
     description: '',
 }

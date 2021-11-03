@@ -21,7 +21,7 @@ export const MovieCard: React.FC<Props> = ({ movie, className }: Props) => {
     <img className={scss.cover} src={movie.coverUrl} alt={movie.title} />
     <div className={scss.titleBlock}>
         <h3 className={scss.title}>{movie.title}</h3>
-        <div className={scss.year}>{movie.year}</div>
+        <div className={scss.year}>{new Date(movie.releaseDate).getFullYear()}</div>
     </div>
     <span className={scss.genres}>{movie.genres.map((genreId) => {
         const genreObj = GENRES.find((genre) => genre.id === genreId)

@@ -4,8 +4,7 @@ export type Movie = {
     id: string;
     title: string;
     genres: number[];
-    year: number;
-    releaseDate?: string;
+    releaseDate: string;
     duration: number;
     rating: number;
     coverUrl?: string;
