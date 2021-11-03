@@ -5,6 +5,7 @@ import { DateSelect } from "../ui/DateSelect/DateSelect";
 import DropDown from "../ui/DropDown/DropDown";
 import { FormFieldType } from "../ui/Form";
 import { Input } from "../ui/Input";
+import { TextArea } from "../ui/TextArea";
 
 export const MOVIE_FORM_FIELDS: FormFieldType<keyof Movie>[] = [
     {
@@ -61,7 +62,7 @@ export const MOVIE_FORM_FIELDS: FormFieldType<keyof Movie>[] = [
     {
         key: "description",
         label: "OVERVIEW",
-        drawControl: (value, onChange) => <Input id="title" placeholder='Movie description' value={value as string} onChange={onChange} />,
+        drawControl: (value, onChange) => <TextArea id="title" placeholder='Movie description' value={value as string} onChange={onChange} />,
         rules: [
             (value: string) => !value && 'Enter description',
         ]
