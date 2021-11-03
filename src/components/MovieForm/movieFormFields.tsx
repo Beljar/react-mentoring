@@ -11,38 +11,59 @@ export const MOVIE_FORM_FIELDS: FormFieldType<keyof Movie>[] = [
         key: "title",
         drawControl: (value, onChange) => <Input id="title" placeholder='Movie title' value={value as string} onChange={onChange} />,
         width: 525,
+        rules: [
+            (value: string) => !value && 'Enter title',
+        ]
     },
     {
         key: "releaseDate",
         label: "RELEASE DATE",
         drawControl: (value, onChange) => <DateSelect placeholder='Select Date'/>,
         width: 301,
+        rules: [
+            (value: string) => !value && 'Enter release date',
+        ]
     },
     {
         key: "url",
         label: "MOVIE URL",
         drawControl: (value, onChange) => <Input id="url" placeholder='https://' value={value as string} onChange={onChange} />,
         width: 525,
+        rules: [
+            (value: string) => !value && 'Enter movie Url',
+        ]
     },
     {
         key: "rating",
         drawControl: (value, onChange) => <Input id="title" placeholder='0-10' value={value as string}  onChange={onChange} />,
         width: 301,
+        rules: [
+            (value: string) => !value && 'Enter raiting',
+        ]
     },    
     {
         key: "genres",
         drawControl: (value, onChange) => <GenreSelector values={value as number[]} onChange={onChange} />,
         width: 525,
+        rules: [
+            (value: number[]) => !value.length && 'Select at least one genre to proceed',
+        ]
     },
     {
         key: "duration",
         label: "RUNTIME",
         drawControl: (value, onChange) => <Input id="title" placeholder='minutes' value={value as string} onChange={onChange} />,
         width: 301,
+        rules: [
+            (value: string) => !value && 'Enter duration',
+        ]
     },
     {
         key: "description",
         label: "OVERVIEW",
         drawControl: (value, onChange) => <Input id="title" placeholder='Movie description' value={value as string} onChange={onChange} />,
+        rules: [
+            (value: string) => !value && 'Enter description',
+        ]
     },
 ]
