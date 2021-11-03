@@ -19,7 +19,7 @@ export const MOVIE_FORM_FIELDS: FormFieldType<keyof Movie>[] = [
     {
         key: "releaseDate",
         label: "RELEASE DATE",
-        drawControl: (value, onChange) => <DateSelect placeholder='Select Date'/>,
+        drawControl: (value, onChange) => <DateSelect placeholder='Select Date' value={value as string} onChange={onChange} />,
         width: 301,
         rules: [
             (value: string) => !value && 'Enter release date',

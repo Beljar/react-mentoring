@@ -11,7 +11,8 @@ export const FILM_MENU_ITEMS = [
         id: 1,
         name: 'edit',
         action: (movie, setModal) => {
-            setModal(<MovieForm movie={movie} title='EDIT MOVIE' onSubmit={() => {setModal(<MessageView
+            setModal(<MovieForm movie={movie} title='EDIT MOVIE' onSubmit={() => {
+                setModal(<MessageView
                 icon={<IconSuccess />}
                 title='CONGRATULATIONS!'
                 text={`The movie has been updated successfully`} />);

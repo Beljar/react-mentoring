@@ -16,7 +16,7 @@ export const MovieCard: React.FC<Props> = ({ movie, className }: Props) => {
     const [menuClosed, setMenuClosed] = React.useState(true);
     const [modal, setModal] = React.useState<React.ReactElement>();
     return <div className={cn(scss.filmCard, className, {[scss.menuClosed]: menuClosed})}>
-    {modal && <Modal isOpened={true} onClose={() => setModal(null)}>{modal}</Modal>}
+    {!!modal && <Modal isOpened={true} onClose={() => setModal(null)}>{modal}</Modal>}
     <FilmMenu setModal={setModal} className={scss.menu} movie={movie} onExpand={() => {setMenuClosed(false)}} onCollapse={() => {setMenuClosed(true)}}/>
     <img className={scss.cover} src={movie.coverUrl} alt={movie.title} />
     <div className={scss.titleBlock}>

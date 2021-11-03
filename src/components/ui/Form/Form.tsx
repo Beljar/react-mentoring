@@ -36,12 +36,12 @@ export const Form: <Entity extends object>(props: Props<Entity>) => JSX.Element 
     const getErrors = () => fields.reduce((acc, field) => {
         const error = getError(values[field.key], field.rules);
         return error ? { ...acc, [field.key]: error } : acc;
-    }, null);
+    }, {});
     return <form className={className}
         onSubmit={(e: React.SyntheticEvent) => {
             e.preventDefault();
-            setErrors(getErrors());
-            !errors && onSubmit(values);
+            const curErrors = getErrors();
+            Object.keys(curErrors).length ? setErrors(curErrors) : onSubmit(values);
         }}
         onReset={() => {
             setValues(initialValues);

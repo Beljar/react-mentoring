@@ -24,7 +24,6 @@ type Props = {
 
 export const MovieForm: React.FC<Props> = ({ movie = emptyMovie, title, onSubmit }) => {
     return <Form<Movie> className={scss.form} title={title} fields={MOVIE_FORM_FIELDS} initialValues={movie} onSubmit={(movie) => {
-        console.log(movie);
         onSubmit?.(movie);
     }} />
 }

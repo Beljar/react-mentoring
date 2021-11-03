@@ -18,7 +18,6 @@ export const Content = () => {
         <div className={scss.filterPanel}>
             <GenresFilter activeFilterKey={activeFilterKey} onChange={(filterOption) => setActiveFilterKey(filterOption.key)} />
             <Sorter onChange={(rule) => {
-                console.log(rule(movies))
                 setMovies([...rule(movies)]);
             }}/>
         </div>

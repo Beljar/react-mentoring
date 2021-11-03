@@ -7,16 +7,21 @@ import scss from './dateSelect.scss';
 
 type Props = {
     placeholder?: string;
+    value?: string;
+    onChange?: (value: string) => void;
 }
 
-export const DateSelect: React.FC<Props> = ({ placeholder }) => {
-    const [startDate, setStartDate] = React.useState();
+export const DateSelect: React.FC<Props> = ({ placeholder, value='', onChange }) => {
+    const [startDate, setStartDate] = React.useState(value ? new Date(value) : '');
     type PropsInput = {
         value?: string;
-        onClick?: () => void;
+        onClick?: () => void;        
     }
-    const DataInput: React.FC<PropsInput> = React.forwardRef(({ value, onClick }, ref) => <Input id={''} value={value} placeholder={placeholder} onClick={onClick}/>)
+    const DataInput: React.FC<PropsInput> = React.forwardRef(({ value='', onClick }, ref) => <Input id={''} value={value} placeholder={placeholder} onClick={onClick}/>)
     return <DatePicker selected={startDate}
-    onChange={(date) => {setStartDate(date)}}
+    onChange={(date) => {
+        setStartDate(date);
+        onChange(date);
+    }}
     customInput={<DataInput />}/>
 }
