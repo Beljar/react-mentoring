@@ -8,6 +8,7 @@ import { ButtonBlock } from './ButtonBlock/ButtonBlock';
 import scss from './form.scss';
 import { Movie } from 'src/entities/film/FilmType';
 import { FormRule } from '.';
+import { useFormik } from 'formik';
 
 
 type Props<Entity = object> = {
@@ -31,22 +32,21 @@ const getError: <V>(value: V, rules: FormRule<V>[]) => string | null = (value, r
 }
 
 export const Form: <Entity extends object>(props: Props<Entity>) => JSX.Element = ({ title, fields, className, initialValues, onSubmit }) => {
-    const [values, setValues] = React.useState(initialValues);
-    const [errors, setErrors] = React.useState({});
     const getErrors = () => fields.reduce((acc, field) => {
         const error = getError(values[field.key], field.rules);
         return error ? { ...acc, [field.key]: error } : acc;
     }, {});
-    return <form className={className}
-        onSubmit={(e: React.SyntheticEvent) => {
-            e.preventDefault();
-            const curErrors = getErrors();
-            Object.keys(curErrors).length ? setErrors(curErrors) : onSubmit(values);
-        }}
-        onReset={() => {
-            setValues(initialValues);
-            setErrors({});
-            }}>
+    const {values, setFieldValue, errors, handleSubmit, handleReset} = useFormik({
+        initialValues,
+        onSubmit: (values) => {
+            console.log(values);
+            onSubmit(values);
+        },
+        onReset: (values, formik) => {formik.resetForm}
+    })
+    console.log(values)
+    console.log(values['genres'])
+    return <form className={className} onSubmit={handleSubmit} onReset={handleReset}>
         <h1 className={scss.title}>{title}</h1>
         <div className={scss.fields}>
             {fields.map((field) =>
@@ -57,7 +57,7 @@ export const Form: <Entity extends object>(props: Props<Entity>) => JSX.Element 
                     width={field.width}
                     error={errors?.[field.key]}
                 >
-                    {field.drawControl(values[field.key], (value) => { setValues({ ...values, [field.key]: value }) })}
+                    {field.drawControl(values[field.key], (value) => { setFieldValue(field.key, value)})}
                 </FormItem>)}
         </div>
         <ButtonBlock className={scss.buttonBlock} />
