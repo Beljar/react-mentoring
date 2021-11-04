@@ -3,18 +3,7 @@ import { Form } from '../ui/Form';
 import { MOVIE_FORM_FIELDS } from './movieFormFields';
 
 import scss from './movieForm.scss';
-import { Movie } from 'src/entities/film';
-
-const emptyMovie: Movie = {
-    id: '',
-    title: '',
-    genres: [],
-    releaseDate: '',
-    duration: null,
-    rating: null,
-    url: '',
-    description: '',
-}
+import { emptyMovie, Movie } from 'src/entities/film';
 
 type Props = {
     title: string;

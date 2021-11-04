@@ -2,16 +2,17 @@ import * as React from 'react';
 import { MovieForm } from '../MovieForm/MovieForm';
 import { Button } from '../ui/Button';
 import { MessageView } from '../ui/MessageView';
-import { Modal } from '../ui/Modal';
+import { emptyMovie } from 'src/entities/film';
 
 import IconSuccess from 'src/components/ui/Icons/IconCheckedCircle.svg';
+
 
 export const FILM_MENU_ITEMS = [
     {
         id: 1,
         name: 'edit',
         action: (movie, setModal) => {
-            setModal(<MovieForm movie={movie} title='EDIT MOVIE' onSubmit={() => {
+            setModal(<MovieForm movie={{...emptyMovie, ...movie}} title='EDIT MOVIE' onSubmit={() => {
                 setModal(<MessageView
                 icon={<IconSuccess />}
                 title='CONGRATULATIONS!'
