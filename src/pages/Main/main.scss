@@ -1,3 +1,13 @@
+@import 'src/styles';
+
 .main {
     position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.background {
+    background-color: $color-bg-main;
 }

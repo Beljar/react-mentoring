@@ -2,6 +2,7 @@ import * as React from 'react';
 import { GenresFilter } from 'src/components/GenresFilter';
 
 import { FILMS } from 'src/entities/film/films';
+import { Movie } from 'src/entities/film';
 
 import { MovieCardsLst } from 'src/components/MovieCardsList/MovieCardsList';
 import { MovieCount } from 'src/components/MovieCount';
@@ -10,7 +11,11 @@ import { Separator } from 'src/components/ui/Separator';
 
 import scss from './styles.scss';
 
-export const Content = () => {
+type Props = {
+    onMovieClick: (movie: Movie) => void; 
+}
+
+export const Content: React.FC<Props> = ({ onMovieClick }) => {
     const [activeFilterKey, setActiveFilterKey] = React.useState<string | number>('all');
     const [movies, setMovies] = React.useState(FILMS);
     
@@ -23,6 +28,6 @@ export const Content = () => {
         </div>
         <Separator />
         <MovieCount count={39} />
-        <MovieCardsLst movies={movies} />
+        <MovieCardsLst movies={movies} onMovieClick={onMovieClick} />
     </main>
 }

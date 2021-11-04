@@ -10,12 +10,13 @@ import { Modal } from '../ui/Modal';
 type Props = {
     movie: Movie;
     className?: string;
+    onClick: () => void;
 }
 
-export const MovieCard: React.FC<Props> = ({ movie, className }: Props) => {
+export const MovieCard: React.FC<Props> = ({ movie, className, onClick }: Props) => {
     const [menuClosed, setMenuClosed] = React.useState(true);
     const [modal, setModal] = React.useState<React.ReactElement>();
-    return <div className={cn(scss.filmCard, className, {[scss.menuClosed]: menuClosed})}>
+    return <div className={cn(scss.filmCard, className, {[scss.menuClosed]: menuClosed})} onClick={onClick}>
     {!!modal && <Modal isOpened={true} onClose={() => setModal(null)}>{modal}</Modal>}
     <FilmMenu setModal={setModal} className={scss.menu} movie={movie} onExpand={() => {setMenuClosed(false)}} onCollapse={() => {setMenuClosed(true)}}/>
     <img className={scss.cover} src={movie.coverUrl} alt={movie.title} />

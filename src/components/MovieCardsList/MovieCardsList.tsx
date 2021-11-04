@@ -6,8 +6,9 @@ import scss from './styles.scss';
 
 type Props = {
     movies: Movie[];
+    onMovieClick: (movie: Movie) => void; 
 }
 
-export const MovieCardsLst: React.FC<Props> = ({ movies }) => {
-    return <div className={scss.movieList}>{movies.map((movie) => <MovieCard className={scss.card} key={movie.id} movie={movie}/>)}</div>
+export const MovieCardsLst: React.FC<Props> = ({ movies, onMovieClick }) => {
+    return <div className={scss.movieList}>{movies.map((movie) => <MovieCard className={scss.card} key={movie.id} movie={movie} onClick={() => onMovieClick(movie)}/>)}</div>
 }
