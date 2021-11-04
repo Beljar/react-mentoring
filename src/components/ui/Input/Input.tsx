@@ -16,7 +16,7 @@ export const Input: React.FC<Props> = ({ id, value = '', onChange, placeholder, 
     return <input
         id={id}
         className={cn(scss.input, { [scss.filled]: !!value }, className)} placeholder={placeholder}
-        value={value}
+        value={value || ''}
         onChange={(e) => {
             const inputValue = e.target.value;
             onChange?.(inputValue);

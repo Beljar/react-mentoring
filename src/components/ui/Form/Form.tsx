@@ -32,20 +32,21 @@ const getError: <V>(value: V, rules: FormRule<V>[]) => string | null = (value, r
 }
 
 export const Form: <Entity extends object>(props: Props<Entity>) => JSX.Element = ({ title, fields, className, initialValues, onSubmit }) => {
-    const getErrors = () => fields.reduce((acc, field) => {
-        const error = getError(values[field.key], field.rules);
-        return error ? { ...acc, [field.key]: error } : acc;
+
+        const validate = (values) => Object.entries(values).reduce((acc, [key, value]) => {
+            const field = fields.find((field) => field.key === key)
+            const error = field ? getError(value, field.rules) : false;
+        return error ? { ...acc, [key]: error } : acc;
     }, {});
+
     const {values, setFieldValue, errors, handleSubmit, handleReset} = useFormik({
         initialValues,
+        validate,
         onSubmit: (values) => {
-            console.log(values);
             onSubmit(values);
         },
         onReset: (values, formik) => {formik.resetForm}
     })
-    console.log(values)
-    console.log(values['genres'])
     return <form className={className} onSubmit={handleSubmit} onReset={handleReset}>
         <h1 className={scss.title}>{title}</h1>
         <div className={scss.fields}>
@@ -55,7 +56,7 @@ export const Form: <Entity extends object>(props: Props<Entity>) => JSX.Element 
                     id={field.key}
                     label={field.label || field.key.toUpperCase()}
                     width={field.width}
-                    error={errors?.[field.key]}
+                    error={errors?.[field.key] as string}
                 >
                     {field.drawControl(values[field.key], (value) => { setFieldValue(field.key, value)})}
                 </FormItem>)}

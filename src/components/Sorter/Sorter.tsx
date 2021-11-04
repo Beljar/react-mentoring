@@ -15,7 +15,6 @@ type Props = {
 export const Sorter: React.FC<Props> = ({ onChange }) => {
     const [curOption, setCurOption] = React.useState(sortingToOption(SORTINGS[0]));
     React.useEffect(() => {
-        console.log(SORTINGS.find((sorting) => sorting.value === curOption.value).rule);
         onChange(SORTINGS.find((sorting) => sorting.value === curOption.value).rule)
     }, [curOption])
     return <div className={scss.sorter}>

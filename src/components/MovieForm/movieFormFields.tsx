@@ -21,9 +21,9 @@ export const MOVIE_FORM_FIELDS: FormFieldType<keyof Movie>[] = [
         label: "RELEASE DATE",
         drawControl: (value, onChange) => <DateSelect placeholder='Select Date' value={value as string} onChange={onChange} />,
         width: 301,
-        rules: [
+/*         rules: [
             (value: string) => !value && 'Enter release date',
-        ]
+        ] */
     },
     {
         key: "url",
@@ -38,9 +38,9 @@ export const MOVIE_FORM_FIELDS: FormFieldType<keyof Movie>[] = [
         key: "rating",
         drawControl: (value, onChange) => <Input id="title" placeholder='0-10' value={value as string}  onChange={onChange} />,
         width: 301,
-        rules: [
+/*         rules: [
             (value: string) => !value && 'Enter raiting',
-        ]
+        ] */
     },    
     {
         key: "genres",
@@ -57,6 +57,7 @@ export const MOVIE_FORM_FIELDS: FormFieldType<keyof Movie>[] = [
         width: 301,
         rules: [
             (value: string) => !value && 'Enter duration',
+            (value: string) => isNaN(Number(value)) && 'Should be a number',
         ]
     },
     {
