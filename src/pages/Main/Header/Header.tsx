@@ -9,13 +9,12 @@ import { Input } from 'src/components/ui/Input/Input';
 import scss from './styles.scss';
 
 type Props = {
-    className?: string;
-}
-
+  className?: string;
+};
 
 export const Header: React.FC<Props> = ({ className }) => (
-    <header className={cn(scss.header, className)}>
-        <Logo />
-        <AddMovieButton />
-    </header>
-)
+  <header className={cn(scss.header, className)}>
+    <Logo />
+    <AddMovieButton />
+  </header>
+);

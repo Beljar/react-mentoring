@@ -8,7 +8,7 @@
     "start": "cross-env NODE_ENV=development webpack serve --mode=development",
     "build:prod": "cross-env NODE_ENV=productions webpack --mode=production",
     "lint": "eslint \"src/**/*.{js,ts,tsx}\"",
-    "lint:fix": "elsint \"src/**/*.{js,ts,tsx}\" --fix",
+    "lint:fix": "eslint \"src/**/*.{js,ts,tsx}\" --fix",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },

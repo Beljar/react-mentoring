@@ -12,22 +12,27 @@ import { Separator } from 'src/components/ui/Separator';
 import scss from './styles.scss';
 
 type Props = {
-    onMovieClick: (movie: Movie) => void; 
-}
+  onMovieClick: (movie: Movie) => void;
+};
 
 export const Content: React.FC<Props> = ({ onMovieClick }) => {
-    const [activeFilterKey, setActiveFilterKey] = React.useState<string | number>('all');
-    const [movies, setMovies] = React.useState(FILMS);
+  const [activeFilterKey, setActiveFilterKey] = React.useState<string | number>('all');
+  const [movies, setMovies] = React.useState(FILMS);
     
-    return <main className={scss.main}>
+  return (
+    <main className={scss.main}>
         <div className={scss.filterPanel}>
-            <GenresFilter activeFilterKey={activeFilterKey} onChange={(filterOption) => setActiveFilterKey(filterOption.key)} />
-            <Sorter onChange={(rule) => {
-                setMovies([...rule(movies)]);
-            }}/>
-        </div>
-        <Separator />
+        <GenresFilter
+          activeFilterKey={activeFilterKey}
+          onChange={(filterOption) => setActiveFilterKey(filterOption.key)}
+          <Sorter onChange={(rule) => {
+              setMovies([...rule(movies)]);
+            }} />
+        />
+      </div>
+      <Separator />
         <MovieCount count={39} />
         <MovieCardsLst movies={movies} onMovieClick={onMovieClick} />
     </main>
-}
+  );
+};
