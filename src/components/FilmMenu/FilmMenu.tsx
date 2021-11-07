@@ -2,6 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 
 import { Movie } from 'src/entities/film';
+import { useExpandable } from 'src/hooks/useExpandable';
 import { ContextMenu } from '../ui/ContextMenu/ContextMenu';
 import { MenuOpenButton } from '../ui/MenuOpenButton';
 import { FILM_MENU_ITEMS } from './filmMenuItems';
@@ -18,31 +19,17 @@ type Props = {
 };
 
 export const FilmMenu: React.FC<Props> = ({ className, movie, setModal, opened, onExpand, onCollapse }) => {
-  const [expanded, setExpanded] = React.useState(false);
-
+  const [menuRef, expanded, setExpanded] = useExpandable();
   React.useEffect(() => {
     setExpanded(opened);
   }, [opened]);
+
   React.useEffect(() => {
     if (expanded) {
       onExpand?.();
     } else {
       onCollapse?.();
     }
-  }, [expanded]);
-  const menuRef: React.RefObject<HTMLDivElement> = React.useRef();
-  const clickListener = React.useCallback((e) => {
-    if (!menuRef?.current?.contains(e.target)) {
-      setExpanded(false);
-    }
-  }, []);
-  React.useEffect(() => {
-    if (expanded) {
-      document.addEventListener('click', clickListener);
-    }
-    return () => {
-      document.removeEventListener('click', clickListener);
-    };
   }, [expanded]);
   return (
     <div ref={menuRef} className={className}>

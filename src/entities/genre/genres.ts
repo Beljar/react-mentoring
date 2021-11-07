@@ -2,43 +2,46 @@ import { Genre } from './GenreType';
 
 export const GENRES_MAIN: Genre[] = [
   {
-    id: 1,
+    id: 'documentary',
     nameShort: 'documentary',
   },
   {
-    id: 2,
+    id: 'comedy',
     nameShort: 'comedy',
   },
   {
-    id: 3,
+    id: 'horror',
     nameShort: 'horror',
   },
   {
-    id: 4,
+    id: 'crime',
     nameShort: 'crime',
   },
 ];
 
 export const GENRES_SUPPLEMENTARY: Genre[] = [
   {
-    id: 5,
+    id: 'action',
     nameShort: 'action',
-    nameFull: 'Action & Adventure',
   },
   {
-    id: 6,
+    id: 'adventure',
+    nameShort: 'adventure',
+  },
+  {
+    id: 'drama',
     nameShort: 'drama',
   },
   {
-    id: 7,
+    id: 'biography',
     nameShort: 'biography',
   },
   {
-    id: 8,
+    id: 'music',
     nameShort: 'music',
   },
   {
-    id: 9,
+    id: 'oscar',
     nameShort: 'oscar',
     nameFull: 'Oscar winning Movie',
   },

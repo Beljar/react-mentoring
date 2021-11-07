@@ -3,6 +3,7 @@ import { Movie } from 'src/entities/film';
 import cn from 'classnames';
 
 import { GENRES } from 'src/entities/genre';
+import { genresToString } from 'src/utils/genresTostring';
 import scss from './MovieCard.scss';
 import { FilmMenu } from '../FilmMenu';
 import { Modal } from '../ui/Modal';
@@ -40,14 +41,7 @@ export const MovieCard: React.FC<Props> = ({ movie, className, onClick }: Props)
           <h3 className={scss.title}>{movie.title}</h3>
           <div className={scss.year}>{new Date(movie.releaseDate).getFullYear()}</div>
         </div>
-        <span className={scss.genres}>
-          {movie.genres
-            .map((genreId) => {
-              const genreObj = GENRES.find((genre) => genre.id === genreId);
-              return genreObj.nameFull || genreObj.nameShort[0].toUpperCase() + genreObj.nameShort.substring(1);
-            })
-            .join(', ')}
-        </span>
+        <span className={scss.genres}>{genresToString(movie.genres)}</span>
       </div>
     </div>
   );

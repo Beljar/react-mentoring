@@ -2,12 +2,13 @@
 
 .header {
     width: 100%;
+    min-height: 90px;
     color: $color-text;
     display: flex;
+    align-items: center;
     justify-content: space-between;
     padding-left: $side-margin;
     padding-right: $side-margin;
-    padding-top: 20px;
     box-sizing: border-box;
     z-index: 1;
 }
