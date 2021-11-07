@@ -17,7 +17,7 @@ export const MovieCard: React.FC<Props> = ({ movie, className, onClick }: Props)
   const [menuClosed, setMenuClosed] = React.useState(true);
   const [modal, setModal] = React.useState<React.ReactElement>();
   return (
-    <div className={cn(scss.filmCard, className, { [scss.menuClosed]: menuClosed })} onClick={onClick}>
+    <div className={cn(scss.filmCard, className, { [scss.menuClosed]: menuClosed })}>
       {!!modal && (
         <Modal isOpened onClose={() => setModal(null)}>
           {modal}
@@ -34,7 +34,7 @@ export const MovieCard: React.FC<Props> = ({ movie, className, onClick }: Props)
           setMenuClosed(true);
         }}
       />
-      <div>
+      <div className={scss.clickable} onClick={onClick}>
         <img className={scss.cover} src={movie.coverUrl} alt={movie.title} />
         <div className={scss.titleBlock}>
           <h3 className={scss.title}>{movie.title}</h3>
