@@ -5,7 +5,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['plugin:react/recommended', 'airbnb', 'plugin:@typescript-eslint/recommended'],
+  extends: ['plugin:react/recommended', 'airbnb', 'plugin:@typescript-eslint/recommended', 'prettier'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -16,15 +16,7 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint', 'prettier'],
   rules: {
-    'prettier/prettier': [
-      'error',
-      {
-        endOfLine: 'auto',
-      },
-      {
-        usePrettierrc: true,
-      },
-    ],
+    'prettier/prettier': 'error',
     'react/jsx-filename-extension': [
       1,
       {
@@ -47,9 +39,6 @@ module.exports = {
     'jsx-a11y/click-events-have-key-events': 'off',
     'jsx-a11y/no-static-element-interactions': 'off',
     'react/require-default-props': 'off',
-    semi: 'error',
-    indent: 'error',
-    'max-len': ['error', { code: 120 }],
   },
   settings: {
     'import/resolver': {

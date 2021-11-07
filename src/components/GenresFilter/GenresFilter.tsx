@@ -9,10 +9,19 @@ import scss from './styles.scss';
 
 type Props = {
   activeFilterKey: string | number;
-    onChange: (filterOption: FilterOptionType<Movie>) => void;
+  onChange: (filterOption: FilterOptionType<Movie>) => void;
 };
 
 export const GenresFilter: React.FC<Props> = ({ activeFilterKey, onChange }) => (
   <ul className={scss.optionsList}>
-        {GENRE_FILTER_OPTIONS.map((filterOption) => <li key={filterOption.key} className={cn(scss.option, { [scss.active]: filterOption.key === activeFilterKey })} onClick={() => onChange(filterOption)}>{filterOption.display}</li>)}
-    </ul>;
+    {GENRE_FILTER_OPTIONS.map((filterOption) => (
+      <li
+        key={filterOption.key}
+        className={cn(scss.option, { [scss.active]: filterOption.key === activeFilterKey })}
+        onClick={() => onChange(filterOption)}
+      >
+        {filterOption.display}
+      </li>
+    ))}
+  </ul>
+);

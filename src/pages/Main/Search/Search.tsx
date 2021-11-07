@@ -10,26 +10,27 @@ export const Search: React.FC = () => {
   return (
     <div className={scss.search}>
       <div className={scss.searchBg} />
-            <div className={scss.searchImgWrapper}>
-                <div className={scss.searchImg} />
-            </div>
+      <div className={scss.searchImgWrapper}>
+        <div className={scss.searchImg} />
+      </div>
       <div className={scss.searchContentWrapper}>
-                <div className={scss.searchContent}>
+        <div className={scss.searchContent}>
           <div className={scss.searchBlock}>
-                    <h1>FIND YOUR MOVIE</h1>
-                    <div className={scss.row}>
+            <h1>FIND YOUR MOVIE</h1>
+            <div className={scss.row}>
               <Input
                 id="search"
                 value={searchString}
                 placeholder="What do you want to watch?"
                 onChange={(value) => setSearchString(value)}
-                      <Button className={scss.searchBtn} width={223} height={57} type="filled">Search</Button>
+              />
+              <Button className={scss.searchBtn} width={223} height={57} type="filled">
                 Search
               </Button>
             </div>
           </div>
         </div>
-            </div>
+      </div>
     </div>
   );
 };

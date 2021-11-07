@@ -6,4 +6,5 @@ export const Separator = () => (
   <div className={scss.separator}>
     <div />
     <div />
-</div>;
+  </div>
+);

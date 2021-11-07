@@ -11,7 +11,7 @@ export const AddMovieButton = () => {
     <MessageView
       icon={<IconSuccess />}
       title="CONGRATULATIONS!"
-      text={'The movie has been added to \n database successfully'}
+      text={`The movie has been added to \n database successfully`}
     />
   );
   const form = (

@@ -7,7 +7,7 @@ import scss from './movieForm.scss';
 
 type Props = {
   title: string;
-    movie?: Movie;
+  movie?: Movie;
   onSubmit?: (movie: Movie) => void;
 };
 
@@ -19,5 +19,6 @@ export const MovieForm: React.FC<Props> = ({ movie = emptyMovie, title, onSubmit
     initialValues={movie}
     onSubmit={(movie) => {
       onSubmit?.(movie);
-}}
-/>;
+    }}
+  />
+);

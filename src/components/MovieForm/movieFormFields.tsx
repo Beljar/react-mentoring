@@ -14,9 +14,7 @@ export const MOVIE_FORM_FIELDS: FormFieldType<keyof Movie>[] = [
       <Input id="title" placeholder="Movie title" value={value as string} onChange={onChange} />
     ),
     width: 525,
-    rules: [
-      (value: string) => !value && 'Enter title',
-    ],
+    rules: [(value: string) => !value && 'Enter title'],
   },
   {
     key: 'releaseDate',
@@ -36,8 +34,7 @@ export const MOVIE_FORM_FIELDS: FormFieldType<keyof Movie>[] = [
       <Input id="url" placeholder="https://" value={value as string} onChange={onChange} />
     ),
     width: 525,
-    rules: [
-      (value: string) => !value && 'Enter movie Url',
+    rules: [(value: string) => !value && 'Enter movie Url'],
   },
   {
     key: 'rating',
@@ -53,9 +50,7 @@ export const MOVIE_FORM_FIELDS: FormFieldType<keyof Movie>[] = [
     key: 'genres',
     drawControl: (value, onChange) => <GenreSelector values={value as number[]} onChange={onChange} />,
     width: 525,
-    rules: [
-      (value: number[]) => !value.length && 'Select at least one genre to proceed',
-    ],
+    rules: [(value: number[]) => !value.length && 'Select at least one genre to proceed'],
   },
   {
     key: 'duration',
@@ -75,8 +70,6 @@ export const MOVIE_FORM_FIELDS: FormFieldType<keyof Movie>[] = [
     drawControl: (value, onChange) => (
       <TextArea id="title" placeholder="Movie description" value={value as string} onChange={onChange} />
     ),
-    rules: [
-      (value: string) => !value && 'Enter description',
-    ],
+    rules: [(value: string) => !value && 'Enter description'],
   },
 ];

@@ -11,18 +11,18 @@ import scss from './styles.scss';
 type Props = {
   className: string;
   movie: Movie;
-    setModal: (elem: React.ReactElement) => void;
+  setModal: (elem: React.ReactElement) => void;
   opened?: boolean;
-    onExpand?: () => void;
-    onCollapse?: () => void;
+  onExpand?: () => void;
+  onCollapse?: () => void;
 };
 
-export const FilmMenu: React.FC<Props> = ({
- className, movie, setModal, opened, onExpand, onCollapse 
-}) => {
+export const FilmMenu: React.FC<Props> = ({ className, movie, setModal, opened, onExpand, onCollapse }) => {
   const [expanded, setExpanded] = React.useState(false);
-    
-  React.useEffect(() => { setExpanded(opened); }, [opened]);
+
+  React.useEffect(() => {
+    setExpanded(opened);
+  }, [opened]);
   React.useEffect(() => {
     if (expanded) {
       onExpand?.();
@@ -40,7 +40,9 @@ export const FilmMenu: React.FC<Props> = ({
     if (expanded) {
       document.addEventListener('click', clickListener);
     }
-    return () => { document.removeEventListener('click', clickListener); };
+    return () => {
+      document.removeEventListener('click', clickListener);
+    };
   }, [expanded]);
   return (
     <div ref={menuRef} className={className}>
@@ -49,7 +51,15 @@ export const FilmMenu: React.FC<Props> = ({
         onClick={() => {
           setExpanded(true);
         }}
-    <ContextMenu className={cn({ [scss.hidden]: !expanded })} options={FILM_MENU_ITEMS.map((item) => ({ label: item.name.toUpperCase(), value: item.id }))} onCollapse={() => setExpanded(false)} onClick={(id) => { FILM_MENU_ITEMS.find((item) => item.id === id).action(movie, setModal); }} />
+      />
+      <ContextMenu
+        className={cn({ [scss.hidden]: !expanded })}
+        options={FILM_MENU_ITEMS.map((item) => ({ label: item.name.toUpperCase(), value: item.id }))}
+        onCollapse={() => setExpanded(false)}
+        onClick={(id) => {
+          FILM_MENU_ITEMS.find((item) => item.id === id).action(movie, setModal);
+        }}
+      />
     </div>
   );
 };

@@ -38,11 +38,11 @@ export const FILM_MENU_ITEMS = [
           icon={undefined}
           title="Delete MOVIE"
           text="Are you sure you want to delete this movie?"
-          button={(
+          button={
             <Button type="filled" width={180} height={57} onClick={() => setModal()}>
               CONFIRM
             </Button>
-          )}
+          }
         />,
       );
       window.scrollTo(0, 0);

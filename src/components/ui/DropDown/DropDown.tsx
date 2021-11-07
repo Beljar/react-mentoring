@@ -9,80 +9,91 @@ import { DropDownType } from './dropDownTypes';
 
 type Option<T> = {
   label: string;
-    value: T;
+  value: T;
 };
 
 type Props = {
-    value: Option<string | number> | Option<string | number>[] | null;
+  value: Option<string | number> | Option<string | number>[] | null;
   options: Option<string | number>[];
-    className?: string;
+  className?: string;
   useCheckboxes?: boolean;
-    isMulti?: boolean;
+  isMulti?: boolean;
   type?: DropDownType;
-    placeholder?: string;
+  placeholder?: string;
   closeMenuOnSelect?: boolean;
-    onChange: (option: Option<string | number> | Option<string | number>[]) => void;
+  onChange: (option: Option<string | number> | Option<string | number>[]) => void;
 };
 
 const DropDown: React.FC<Props> = ({
- value, options, className, useCheckboxes = false, isMulti = false, placeholder, closeMenuOnSelect, type = 'transparent', onChange 
+  value,
+  options,
+  className,
+  useCheckboxes = false,
+  isMulti = false,
+  placeholder,
+  closeMenuOnSelect,
+  type = 'transparent',
+  onChange,
 }) => {
   const Control = (props) => (
-    <Components.Control {...props} className={cn(scss.control, scss[type])}
-  >
-    <>
-                {isMulti && props.hasValue
-                && <Components.Placeholder className={scss.placeholder} {...{ ...props, hasValue: false, children: placeholder }} />}
+    <Components.Control {...props} className={cn(scss.control, scss[type])}>
+      <>
+        {isMulti && props.hasValue && (
+          <Components.Placeholder
+            className={scss.placeholder}
+            {...{ ...props, hasValue: false, children: placeholder }}
+          />
         )}
         {props.children}
-            </>
-        </Components.Control>);
+      </>
+    </Components.Control>
+  );
   const MenuList = (props) => <Components.MenuList {...props} className={scss.menu} />;
   const Option = (props) => (
     <Components.Option {...props} className={cn(scss.option, { [scss.selected]: props.isSelected })}>
       {useCheckboxes && (
         <>
-          type="checkbox"
-        checked={props.isSelected}
-        onChange={() => null}
+          <input type="checkbox" checked={props.isSelected} onChange={() => null} />{' '}
         </>
       )}
       <label>{props.label}</label>
-</Components.Option>);
+    </Components.Option>
+  );
   const SingleValue = (props) => <Components.SingleValue {...props} className={scss.value} />;
   const MultiValue = (props) => null;
   const ValueContainer = (props) => <Components.SingleValue {...props} className={scss.container} />;
   const DropdownIndicator = (props) => (
     <Components.DropdownIndicator {...props} className={scss.container}>
-            <IconDropDown />
-        </Components.DropdownIndicator>);
+      <IconDropDown />
+    </Components.DropdownIndicator>
+  );
   return (
     <Select
       hideSelectedOptions={false}
-    className={className}
+      className={className}
       onChange={onChange}
-    isSearchable={false}
+      isSearchable={false}
       value={value}
-    options={options}
-    isMulti={isMulti}
+      options={options}
+      isMulti={isMulti}
       isClearable={false}
-    placeholder={placeholder}
+      placeholder={placeholder}
       closeMenuOnSelect={closeMenuOnSelect}
-    components={{
+      components={{
         Option,
-      MenuList,
-      Control,
+        MenuList,
+        Control,
         SingleValue,
-      MultiValue,
+        MultiValue,
         ValueContainer,
-      IndicatorSeparator: () => null,
+        IndicatorSeparator: () => null,
         DropdownIndicator,
-    }}
+      }}
       styles={{
-      option: () => null,
-      control: () => null,
-      valueContainer: () => null,
-      singleValue: () => null,
+        option: () => null,
+        control: () => null,
+        valueContainer: () => null,
+        singleValue: () => null,
       }}
     />
   );
