@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { emptyMovie } from 'src/entities/film';
+import { emptyMovie } from 'src/entities/movie';
 import IconSuccess from 'src/components/ui/Icons/IconCheckedCircle.svg';
 import { MovieForm } from '../MovieForm/MovieForm';
 import { Button } from '../ui/Button';

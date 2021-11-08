@@ -1,10 +1,10 @@
 import React from 'react';
-import { Movie } from 'src/entities/film';
+import { Movie } from 'src/entities/movie';
 import { genresToString } from 'src/utils/genresTostring';
 import cn from 'classnames';
 
-import scss from './movieDetails.scss';
 import { minutesToString } from 'src/utils/minutesToString';
+import scss from './movieDetails.scss';
 
 type Props = {
   movie: Movie;
@@ -12,18 +12,18 @@ type Props = {
 
 export const MovieDetails: React.FC<Props> = ({ movie }) => (
   <div className={scss.root}>
-    <img className={scss.cover} src={movie.coverUrl} alt={movie.title} />
+    <img className={scss.cover} src={movie.posterPath} alt={movie.title} />
     <div className={scss.textBlock}>
       <div className={scss.row}>
         <h3 className={scss.title}>{movie.title}</h3>
-        <div className={scss.raiting}>{movie.rating}</div>
+        <div className={scss.raiting}>{movie.voteAverage}</div>
       </div>
       <div className={scss.genres}>{genresToString(movie.genres)}</div>
       <div className={cn(scss.row, scss.date)}>
         <div className={scss.year}>{new Date(movie.releaseDate).getFullYear()}</div>
-        <div>{minutesToString(movie.duration)}</div>
+        <div>{minutesToString(movie.runtime)}</div>
       </div>
-      <div>{movie.description}</div>
+      <div>{movie.overview}</div>
     </div>
   </div>
 );

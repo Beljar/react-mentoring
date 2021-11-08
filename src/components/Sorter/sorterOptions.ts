@@ -1,4 +1,4 @@
-import { Movie } from 'src/entities/film';
+import { Movie } from 'src/entities/movie';
 
 export const SORTINGS = [
   {
@@ -10,11 +10,11 @@ export const SORTINGS = [
   {
     label: 'RATING',
     value: '2',
-    rule: (movies: Movie[]) => movies.sort((a, b) => b.rating - a.rating),
+    rule: (movies: Movie[]) => movies.sort((a, b) => b.voteAverage - a.voteAverage),
   },
   {
     label: 'DURATION',
     value: '3',
-    rule: (movies: Movie[]) => movies.sort((a, b) => b.duration - a.duration),
+    rule: (movies: Movie[]) => movies.sort((a, b) => b.runtime - a.runtime),
   },
 ];

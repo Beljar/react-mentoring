@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cn from 'classnames';
 
-import { Movie } from 'src/entities/film';
+import { Movie } from 'src/entities/movie';
 import { FilterOptionType } from 'src/entities/filterOption';
 import { GENRE_FILTER_OPTIONS } from './genreFilterOptions';
 

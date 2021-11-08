@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Movie } from 'src/entities/film';
+import { Movie } from 'src/entities/movie';
 import { MovieCard } from '../MovieCard';
 
 import scss from './styles.scss';

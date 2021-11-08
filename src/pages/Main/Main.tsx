@@ -2,13 +2,13 @@ import * as React from 'react';
 import { Header } from 'src/pages/Main/Header';
 import { PageWrapper } from 'src/components/PageWrapper';
 import { ErrorBoundary } from 'src/components/ErrorBoundary';
-import { Movie } from 'src/entities/film';
+import { Movie } from 'src/entities/movie';
 import { MovieDetails } from 'src/components/MovieDetails';
 import { AddMovieButton } from 'src/components/AddMovieButton/AddMovieButton';
 import IconSearch from 'src/components/ui/Icons/IconSearch.svg';
 import { Search } from './Search';
 
-import { Content } from './Content/Content';
+import { Content } from './Content';
 import { Footer } from './Footer/Footer';
 
 import scss from './main.scss';

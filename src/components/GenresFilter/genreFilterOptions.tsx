@@ -1,4 +1,4 @@
-import { Movie } from 'src/entities/film';
+import { Movie } from 'src/entities/movie';
 import { FilterOptionType } from 'src/entities/filterOption';
 import { GENRES_MAIN } from 'src/entities/genre';
 

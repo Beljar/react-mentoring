@@ -4,6 +4,8 @@ export const genresToString = (genres: string[]) =>
   genres
     .map((genreId) => {
       const genreObj = GENRES.find((genre) => genre.id === genreId);
-      return genreObj.nameFull || genreObj.nameShort[0].toUpperCase() + genreObj.nameShort.substring(1);
+      return genreObj
+        ? genreObj.nameFull || genreObj.nameShort[0].toUpperCase() + genreObj.nameShort.substring(1)
+        : genreId;
     })
     .join(', ');

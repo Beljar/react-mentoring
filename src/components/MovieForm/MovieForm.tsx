@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { emptyMovie, Movie } from 'src/entities/film';
+import { emptyMovie, Movie } from 'src/entities/movie';
 import { Form } from '../ui/Form';
 import { MOVIE_FORM_FIELDS } from './movieFormFields';
 

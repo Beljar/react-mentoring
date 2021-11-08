@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Movie } from 'src/entities/film';
+import { Movie } from 'src/entities/movie';
 import { GenreSelector } from '../GenreSelector';
 import { DateSelect } from '../ui/DateSelect/DateSelect';
 import DropDown from '../ui/DropDown/DropDown';
@@ -37,7 +37,7 @@ export const MOVIE_FORM_FIELDS: FormFieldType<keyof Movie>[] = [
     rules: [(value: string) => !value && 'Enter movie Url'],
   },
   {
-    key: 'rating',
+    key: 'voteAverage',
     drawControl: (value, onChange) => (
       <Input id="title" placeholder="0-10" value={value as string} onChange={onChange} />
     ),
@@ -53,7 +53,7 @@ export const MOVIE_FORM_FIELDS: FormFieldType<keyof Movie>[] = [
     rules: [(value: number[]) => !value.length && 'Select at least one genre to proceed'],
   },
   {
-    key: 'duration',
+    key: 'runtime',
     label: 'RUNTIME',
     drawControl: (value, onChange) => (
       <Input id="title" placeholder="minutes" value={value as string} onChange={onChange} />
@@ -61,11 +61,11 @@ export const MOVIE_FORM_FIELDS: FormFieldType<keyof Movie>[] = [
     width: 301,
     rules: [
       (value: string) => !value && 'Enter duration',
-      (value: string) => isNaN(Number(value)) && 'Should be a number',
+      (value: string) => Number.isNaN(Number(value)) && 'Should be a number',
     ],
   },
   {
-    key: 'description',
+    key: 'overview',
     label: 'OVERVIEW',
     drawControl: (value, onChange) => (
       <TextArea id="title" placeholder="Movie description" value={value as string} onChange={onChange} />

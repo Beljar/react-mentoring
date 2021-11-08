@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Movie } from 'src/entities/film';
+import { Movie } from 'src/entities/movie';
 import cn from 'classnames';
 
 import { GENRES } from 'src/entities/genre';
@@ -36,12 +36,20 @@ export const MovieCard: React.FC<Props> = ({ movie, className, onClick }: Props)
         }}
       />
       <div className={scss.clickable} onClick={onClick}>
-        <img className={scss.cover} src={movie.coverUrl} alt={movie.title} />
+        <img
+          className={scss.cover}
+          src={movie.posterPath}
+          alt={movie.title}
+          onError={(e: React.SyntheticEvent) => {
+            const img: HTMLImageElement = e.target as HTMLImageElement;
+            img.src = '/assets/covers/not_found.jpg';
+          }}
+        />
         <div className={scss.titleBlock}>
           <h3 className={scss.title}>{movie.title}</h3>
           <div className={scss.year}>{new Date(movie.releaseDate).getFullYear()}</div>
         </div>
-        <span className={scss.genres}>{genresToString(movie.genres)}</span>
+        <span className={scss.genres}>{movie.genres && genresToString(movie.genres)}</span>
       </div>
     </div>
   );

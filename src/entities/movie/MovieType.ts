@@ -5,9 +5,9 @@ export type Movie = {
   title: string;
   genres: string[];
   releaseDate: string;
-  duration: number;
-  rating: number;
-  coverUrl?: string;
+  runtime: number;
+  voteAverage: number;
+  posterPath?: string;
   url?: string;
-  description?: string;
+  overview?: string;
 };
