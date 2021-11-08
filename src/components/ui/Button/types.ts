@@ -1,1 +1,1 @@
-export type ButtonType = 'filled' | 'outlined' | 'transparent'
+export type ButtonType = 'filled' | 'outlined' | 'transparent';
