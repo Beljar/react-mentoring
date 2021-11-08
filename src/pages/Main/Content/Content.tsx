@@ -11,18 +11,25 @@ import { Separator } from 'src/components/ui/Separator';
 import scss from './styles.scss';
 
 export const Content = () => {
-    const [activeFilterKey, setActiveFilterKey] = React.useState<string | number>('all');
-    const [movies, setMovies] = React.useState(FILMS);
-    
-    return <main className={scss.main}>
-        <div className={scss.filterPanel}>
-            <GenresFilter activeFilterKey={activeFilterKey} onChange={(filterOption) => setActiveFilterKey(filterOption.key)} />
-            <Sorter onChange={(rule) => {
-                setMovies([...rule(movies)]);
-            }}/>
-        </div>
-        <Separator />
-        <MovieCount count={39} />
-        <MovieCardsLst movies={movies} />
+  const [activeFilterKey, setActiveFilterKey] = React.useState<string | number>('all');
+  const [movies, setMovies] = React.useState(FILMS);
+
+  return (
+    <main className={scss.main}>
+      <div className={scss.filterPanel}>
+        <GenresFilter
+          activeFilterKey={activeFilterKey}
+          onChange={(filterOption) => setActiveFilterKey(filterOption.key)}
+        />
+        <Sorter
+          onChange={(rule) => {
+            setMovies([...rule(movies)]);
+          }}
+        />
+      </div>
+      <Separator />
+      <MovieCount count={39} />
+      <MovieCardsLst movies={movies} />
     </main>
-}
+  );
+};

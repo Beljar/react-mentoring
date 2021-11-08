@@ -5,9 +5,13 @@ import { MovieCard } from '../MovieCard';
 import scss from './styles.scss';
 
 type Props = {
-    movies: Movie[];
-}
+  movies: Movie[];
+};
 
-export const MovieCardsLst: React.FC<Props> = ({ movies }) => {
-    return <div className={scss.movieList}>{movies.map((movie) => <MovieCard className={scss.card} key={movie.id} movie={movie}/>)}</div>
-}
+export const MovieCardsLst: React.FC<Props> = ({ movies }) => (
+  <div className={scss.movieList}>
+    {movies.map((movie) => (
+      <MovieCard className={scss.card} key={movie.id} movie={movie} />
+    ))}
+  </div>
+);
