@@ -1,0 +1,14 @@
+@import 'src/styles';
+
+.sorter {
+    display: flex;
+    .label {
+        display: flex;
+        align-items: center;
+        margin-right: 30px;
+        color: $color-text-secondary
+    }
+    .dropdown {
+        min-width: 150px;
+    }
+}

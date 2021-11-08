@@ -1,0 +1,36 @@
+@import 'src/styles';
+
+.control {
+    display: flex;
+    background-color: none;
+    border: none;
+    cursor: pointer;
+}
+
+.value {
+    display: flex;
+    align-items: center;
+    color: $color-text;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.menu {
+    background-color: $color-ui-bg-transparent;
+}
+
+.option {
+    color: $color-text!important;
+    &.selected {
+        background-color: $color-main;
+    }
+    &:active {
+        background-color: $color-main-active!important;
+    }
+    &:hover {
+        background-color: $color-secondary;
+    }
+}
