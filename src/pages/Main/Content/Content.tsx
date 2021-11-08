@@ -13,6 +13,7 @@ import { Separator } from 'src/components/ui/Separator';
 import { apiGetMovies } from 'src/apiCall/apiCallMovies/apiGetMovies';
 import { connect } from 'react-redux';
 
+import { Dispatch } from 'redux';
 import scss from './styles.scss';
 
 type Props = {
@@ -20,11 +21,12 @@ type Props = {
   movies?: Movie[];
   getMovies?: () => void;
   totalAmount?: number;
+  dispatch?: Dispatch<{ type: string; payload: object }>;
 };
 
-const Content: React.FC<Props> = ({ movies, totalAmount, getMovies, onMovieClick }) => {
+const Content: React.FC<Props> = ({ movies, totalAmount, getMovies, dispatch, onMovieClick }) => {
   const [activeFilterKey, setActiveFilterKey] = React.useState<string | number>('all');
-
+  console.log(movies);
   React.useEffect(() => {
     getMovies();
   }, []);
@@ -36,7 +38,11 @@ const Content: React.FC<Props> = ({ movies, totalAmount, getMovies, onMovieClick
           activeFilterKey={activeFilterKey}
           onChange={(filterOption) => setActiveFilterKey(filterOption.key)}
         />
-        <Sorter onChange={(rule) => {}} />
+        <Sorter
+          onChange={(rule) => {
+            rule(dispatch);
+          }}
+        />
       </div>
       <Separator />
       <MovieCount count={totalAmount} />
@@ -51,6 +57,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  dispatch,
   getMovies: () => dispatch(loadMovies()),
 });
 
