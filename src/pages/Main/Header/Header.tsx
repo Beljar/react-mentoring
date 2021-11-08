@@ -6,10 +6,11 @@ import { Input } from 'src/components/ui/Input/Input';
 
 import scss from './styles.scss';
 
-
 export const Header: React.FC = () => (
-    <header className={scss.header}>
-        <Logo />
-        <Button width={177} height={46} type='transparent'>+ ADD MOVIE</Button>
-    </header>
-)
+  <header className={scss.header}>
+    <Logo />
+    <Button width={177} height={46} type="transparent">
+      + ADD MOVIE
+    </Button>
+  </header>
+);

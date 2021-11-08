@@ -1,18 +1,20 @@
 import * as React from 'react';
 import { Header } from 'src/pages/Main/Header';
-import { Search } from './Search';
 import { PageWrapper } from 'src/components/PageWrapper';
-
 import { Button } from 'src/components/ui/Button';
+import { ErrorBoundary } from 'src/components/ErrorBoundary';
+import { Search } from './Search';
+
 import { Content } from './Content/Content';
 import { Footer } from './Footer/Footer';
-import { ErrorBoundary } from 'src/components/ErrorBoundary';
 
-export const Main:React.FC = () => (<PageWrapper>
+export const Main: React.FC = () => (
+  <PageWrapper>
     <Header />
-    <Search/>
+    <Search />
     <ErrorBoundary>
-       <Content /> 
-    </ErrorBoundary>    
+      <Content />
+    </ErrorBoundary>
     <Footer />
-    </PageWrapper>)
+  </PageWrapper>
+);

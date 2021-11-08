@@ -9,14 +9,16 @@ import { Separator } from 'src/components/ui/Separator';
 import scss from './styles.scss';
 
 export const Content = () => {
-    const [activeFilterKey, setActiveFilterKey] = React.useState('all');
-    return <main className={scss.main}>
-        <div className={scss.filterPanel}>
-            <GenresFilter activeFilterKey={activeFilterKey} onChange={setActiveFilterKey} />
-            <Sorter />
-        </div>
-        <Separator />
-        <MovieCount count={39} />
-        <MovieCardsLst />
+  const [activeFilterKey, setActiveFilterKey] = React.useState('all');
+  return (
+    <main className={scss.main}>
+      <div className={scss.filterPanel}>
+        <GenresFilter activeFilterKey={activeFilterKey} onChange={setActiveFilterKey} />
+        <Sorter />
+      </div>
+      <Separator />
+      <MovieCount count={39} />
+      <MovieCardsLst />
     </main>
-}
+  );
+};

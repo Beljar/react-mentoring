@@ -1,5 +1,5 @@
 export type SorterOptionType<T> = {
-    key: string,
-    display: string,
-    rule: (data: T[]) => T[],
-}
+  key: string;
+  display: string;
+  rule: (data: T[]) => T[];
+};
