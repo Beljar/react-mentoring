@@ -3,7 +3,7 @@ import { GenresFilter } from 'src/components/GenresFilter';
 
 import { FILMS } from 'src/entities/movie/movie';
 import { Movie } from 'src/entities/movie';
-import { loadMovies } from 'src/actions';
+import { initLoadMovies, loadMovies } from 'src/actions';
 
 import { MovieCardsLst } from 'src/components/MovieCardsList/MovieCardsList';
 import { MovieCount } from 'src/components/MovieCount';
@@ -19,16 +19,30 @@ import scss from './styles.scss';
 type Props = {
   onMovieClick: (movie: Movie) => void;
   movies?: Movie[];
-  getMovies?: () => void;
+  initLoad?: () => void;
+  load?: () => void;
   totalAmount?: number;
   dispatch?: Dispatch<{ type: string; payload: object }>;
 };
 
-const Content: React.FC<Props> = ({ movies, totalAmount, getMovies, dispatch, onMovieClick }) => {
+const Content: React.FC<Props> = ({ movies, totalAmount, initLoad, load, dispatch, onMovieClick }) => {
   const [activeFilterKey, setActiveFilterKey] = React.useState<string | number>('all');
   console.log(movies);
   React.useEffect(() => {
-    getMovies();
+    console.log('get');
+    // initLoad();
+  }, []);
+
+  React.useEffect(() => {
+    document.addEventListener('scroll', (e) => {
+      const {
+        documentElement: { scrollHeight, clientHeight, scrollTop },
+      } = document;
+      console.log(clientHeight + scrollTop >= scrollHeight);
+      if (clientHeight + scrollTop >= scrollHeight) {
+        load();
+      }
+    });
   }, []);
 
   return (
@@ -58,7 +72,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   dispatch,
-  getMovies: () => dispatch(loadMovies()),
+  initLoad: () => dispatch(initLoadMovies()),
+  load: () => dispatch(loadMovies()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Content);

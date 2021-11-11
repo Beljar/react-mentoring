@@ -5,8 +5,10 @@ const initialMovies = {
   totalAmount: 0,
   data: [],
   request: {
-    sortBy: undefined,
+    sortBy: '',
     sortOrder: 'desc',
+    offset: 0,
+    limit: 9,
   },
   offset: 0,
   limit: 9,
@@ -14,12 +16,20 @@ const initialMovies = {
 
 export const moviesReducer = (state = initialMovies, action) => {
   switch (action.type) {
+    case 'INIT_LOAD_MOVIES':
+      console.log('init');
+      return { ...initialMovies, ...action.payload };
     case 'LOAD_MOVIES':
-      return { ...action.payload, request: state.request };
+      console.log('load');
+      return {
+        ...state,
+        data: [...state.data, ...action.payload.data],
+        request: { ...state.request, offset: state.request.offset + state.request.limit },
+      };
     case 'SET_SORTING':
-      console.log('sorting')
-      console.log(action.payload)
-      return { ...state, request: { ...state.request, sortBy: action.payload } };
+      console.log('sorting');
+      console.log(action.payload);
+      return { ...initialMovies, request: { ...state.request, offset: 0, sortBy: action.payload } };
     default:
       return state;
   }
