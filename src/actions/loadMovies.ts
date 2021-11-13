@@ -10,7 +10,18 @@ export const loadMovies = () => (dispatch, getState) => {
   apiGetMovies(getState().request).then((result) => dispatch({ type: 'LOAD_MOVIES', payload: result }));
 };
 
-export const setSorting = (field) => (dispatch) => {
-  dispatch({ type: 'SET_SORTING', payload: field });
+export const setSorting = (field) => (dispatch, getState) => {
+  const {
+    request: { sortBy },
+  } = getState();
+  console.log(sortBy);
+  if (sortBy !== field) {
+    dispatch({ type: 'SET_SORTING', payload: field });
+    dispatch(loadMovies());
+  }
+};
+
+export const setGenreFilter = (genre) => (dispatch) => {
+  dispatch({ type: 'SET_GENRE_FILTER', payload: genre });
   dispatch(loadMovies());
 };

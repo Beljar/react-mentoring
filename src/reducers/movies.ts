@@ -1,15 +1,11 @@
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
+import { MOVIES_INITIAL_REQUEST } from 'src/entities/movie';
 
 const initialMovies = {
   totalAmount: 0,
   data: [],
-  request: {
-    sortBy: '',
-    sortOrder: 'desc',
-    offset: 0,
-    limit: 9,
-  },
+  request: MOVIES_INITIAL_REQUEST,
   offset: 0,
   limit: 9,
 };
@@ -21,8 +17,9 @@ export const moviesReducer = (state = initialMovies, action) => {
       return { ...initialMovies, ...action.payload };
     case 'LOAD_MOVIES':
       console.log('load');
+      console.log(action.payload)
       return {
-        ...state,
+        ...action.payload,
         data: [...state.data, ...action.payload.data],
         request: { ...state.request, offset: state.request.offset + state.request.limit },
       };

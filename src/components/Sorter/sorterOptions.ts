@@ -1,20 +1,19 @@
 import { setSorting } from 'src/actions';
-import { Movie } from 'src/entities/movie';
+import { Movie, MOVIES_INITIAL_REQUEST } from 'src/entities/movie';
 
 export const SORTINGS = [
   {
     label: 'RELEASE DATE',
-    value: '1',
-    rule: (dispatch) => dispatch(setSorting('release_date')),
+    value: 'release_date',
   },
   {
     label: 'RATING',
-    value: '2',
-    rule: (dispatch) => dispatch(setSorting('vote_average')),
+    value: 'vote_average',
   },
   {
     label: 'DURATION',
-    value: '3',
-    rule: (dispatch) => dispatch(setSorting('runtime')),
+    value: 'runtime',
   },
 ];
+
+export const getSorterInitialOption = () => SORTINGS.find((sorting) => sorting.value === MOVIES_INITIAL_REQUEST.sortBy);
