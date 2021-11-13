@@ -7,7 +7,11 @@ export const initLoadMovies = () => (dispatch, getState) => {
 
 export const loadMovies = () => (dispatch, getState) => {
   console.log('loadMovies');
-  apiGetMovies(getState().request).then((result) => dispatch({ type: 'LOAD_MOVIES', payload: result }));
+  dispatch({ type: 'SET_LOADING', payload: true });
+  apiGetMovies(getState().request).then((result) => {
+    dispatch({ type: 'LOAD_MOVIES', payload: result });
+    dispatch({ type: 'SET_LOADING', payload: false });
+  });
 };
 
 export const setSorting = (field) => (dispatch, getState) => {

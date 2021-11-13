@@ -8,6 +8,7 @@ const initialMovies = {
   request: MOVIES_INITIAL_REQUEST,
   offset: 0,
   limit: 9,
+  isLoading: false,
 };
 
 export const moviesReducer = (state = initialMovies, action) => {
@@ -19,6 +20,7 @@ export const moviesReducer = (state = initialMovies, action) => {
       console.log('load');
       console.log(action.payload)
       return {
+        ...state,
         ...action.payload,
         data: [...state.data, ...action.payload.data],
         request: { ...state.request, offset: state.request.offset + state.request.limit },
@@ -27,6 +29,12 @@ export const moviesReducer = (state = initialMovies, action) => {
       console.log('sorting');
       console.log(action.payload);
       return { ...initialMovies, request: { ...state.request, offset: 0, sortBy: action.payload } };
+    case 'SET_LOADING':
+      console.log('set loading');
+      return {
+        ...state,
+        isLoading: action.payload,
+      }
     default:
       return state;
   }

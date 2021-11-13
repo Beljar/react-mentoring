@@ -14,6 +14,7 @@ import { apiGetMovies } from 'src/apiCall/apiCallMovies/apiGetMovies';
 import { connect } from 'react-redux';
 
 import { Dispatch } from 'redux';
+import { Loader } from 'src/components/Loader';
 import scss from './styles.scss';
 
 type Props = {
@@ -22,9 +23,10 @@ type Props = {
   onLoad?: () => void;
   onSort?: (field: string) => void;
   totalAmount?: number;
+  isLoading?: boolean;
 };
 
-const Content: React.FC<Props> = ({ movies, totalAmount, onLoad, onSort, onMovieClick }) => {
+const Content: React.FC<Props> = ({ movies, totalAmount, isLoading, onLoad, onSort, onMovieClick }) => {
   const [activeFilterKey, setActiveFilterKey] = React.useState<string | number>('all');
   React.useEffect(() => {
     onLoad();
@@ -34,7 +36,7 @@ const Content: React.FC<Props> = ({ movies, totalAmount, onLoad, onSort, onMovie
       const {
         documentElement: { scrollHeight, clientHeight, scrollTop },
       } = document;
-      if (clientHeight + scrollTop >= scrollHeight) {
+      if (Math.ceil(clientHeight + scrollTop) >= scrollHeight) {
         onLoad();
       }
     });
@@ -58,6 +60,11 @@ const Content: React.FC<Props> = ({ movies, totalAmount, onLoad, onSort, onMovie
       <Separator />
       <MovieCount count={totalAmount} />
       <MovieCardsLst movies={movies} onMovieClick={onMovieClick} />
+      {isLoading && (
+        <div className={scss.center}>
+          <Loader />
+        </div>
+      )}
     </main>
   );
 };
@@ -65,6 +72,7 @@ const Content: React.FC<Props> = ({ movies, totalAmount, onLoad, onSort, onMovie
 const mapStateToProps = (state) => ({
   movies: state.data,
   totalAmount: state.totalAmount,
+  isLoading: state.isLoading,
 });
 
 const mapDispatchToProps = (dispatch) => ({
