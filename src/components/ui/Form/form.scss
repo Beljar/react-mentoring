@@ -1,0 +1,18 @@
+@import 'src/styles';
+
+.fields {
+    display: flex;
+    flex-wrap: wrap;    
+    margin: 0 -15px;
+}
+
+.title {
+    font-weight: 300;
+    font-size: 40px;
+    line-height: 49px;
+    color: $color-text; 
+}
+
+.button-block {
+    margin-top: 45px;
+}

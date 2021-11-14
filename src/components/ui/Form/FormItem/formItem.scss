@@ -1,0 +1,20 @@
+@import 'src/styles';
+
+.form-item {
+    margin: 15px 15px;
+    .label {
+        display: inline-block;
+        margin-bottom: 13px;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        color: $color-main;
+        text-transform: uppercase;
+    }
+    .error {
+        margin-top: 5px;
+        font-size: 14px;
+        line-height: 17px;
+        color: $color-main;
+    }
+}

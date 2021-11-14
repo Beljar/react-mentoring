@@ -1,0 +1,13 @@
+@import 'src/styles';
+
+.separator {
+    & > *:first-child {
+        height: 2px;
+        background-color: $color-secondary;
+    }
+    & > *:last-child {
+        height: 1px;
+        margin-top: 1px;
+        background-color: $color-accent-dark;
+    }
+}

@@ -1,0 +1,27 @@
+@import 'src/styles';
+
+.menu {
+    min-width: 190px;
+    padding-bottom: 12px;
+    border-radius: $radius;
+    background-color: $color-bg-main;
+    .close {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 6px 9px;
+    }
+    .item{
+        padding-top: 6px;
+        padding-bottom: 6px;
+        padding-left: 23px;
+        color: $color-text;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+        cursor: pointer;
+        &:hover {
+            background-color: $color-main;
+        }
+    }
+}
