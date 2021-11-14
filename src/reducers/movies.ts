@@ -13,6 +13,8 @@ const initialMovies = {
 
 export const moviesReducer = (state = initialMovies, action) => {
   switch (action.type) {
+    case 'DROP_OFFSET':
+      return { ...state, request: { ...state.request, offset: 0 } };
     case 'INIT_LOAD_MOVIES':
       console.log('init');
       return { ...initialMovies, ...action.payload };

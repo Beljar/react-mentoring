@@ -1,6 +1,8 @@
 import * as React from 'react';
+import { apiPostMovie } from 'src/apiCall/apiCallMovies/apiPostMovie';
 import { Button } from 'src/components/ui/Button';
 import IconSuccess from 'src/components/ui/Icons/IconCheckedCircle.svg';
+import { Movie } from 'src/entities/movie';
 import { MovieForm } from '../MovieForm/MovieForm';
 import { MessageView } from '../ui/MessageView';
 import { Modal } from '../ui/Modal';
@@ -17,7 +19,8 @@ export const AddMovieButton = () => {
   const form = (
     <MovieForm
       title="ADD MOVIE"
-      onSubmit={() => {
+      onSubmit={(movie: Movie) => {
+        apiPostMovie(movie);
         setModal(success);
         window.scroll(0, 0);
       }}

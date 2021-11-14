@@ -28,7 +28,7 @@ export const MOVIE_FORM_FIELDS: FormFieldType<keyof Movie>[] = [
         ] */
   },
   {
-    key: 'url',
+    key: 'posterPath',
     label: 'MOVIE URL',
     drawControl: (value, onChange) => (
       <Input id="url" placeholder="https://" value={value as string} onChange={onChange} />
@@ -48,7 +48,7 @@ export const MOVIE_FORM_FIELDS: FormFieldType<keyof Movie>[] = [
   },
   {
     key: 'genres',
-    drawControl: (value, onChange) => <GenreSelector values={value as number[]} onChange={onChange} />,
+    drawControl: (value, onChange) => <GenreSelector values={value as string[]} onChange={onChange} />,
     width: 525,
     rules: [(value: number[]) => !value.length && 'Select at least one genre to proceed'],
   },

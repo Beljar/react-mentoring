@@ -37,6 +37,8 @@ export const Form: <Entity extends object>(props: Props<Entity>) => JSX.Element 
   initialValues,
   onSubmit,
 }) => {
+console.log(initialValues);
+
   const validate = (values) =>
     Object.entries(values).reduce((acc, [key, value]) => {
       const field = fields.find((field) => field.key === key);
@@ -46,6 +48,7 @@ export const Form: <Entity extends object>(props: Props<Entity>) => JSX.Element 
 
   const { values, setFieldValue, errors, handleSubmit, handleReset } = useFormik({
     initialValues,
+    validateOnChange: false,
     validate,
     onSubmit: (values) => {
       onSubmit(values);

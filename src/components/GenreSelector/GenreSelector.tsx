@@ -4,7 +4,7 @@ import { Option } from 'src/types';
 import DropDown from '../ui/DropDown/DropDown';
 
 type Props = {
-  values: number[];
+  values: string[];
   onChange: (option: number[]) => void;
 };
 
@@ -12,16 +12,21 @@ export const GenreSelector: React.FC<Props> = ({ values, onChange }) => (
   <DropDown
     value={values.map((value) => {
       const genre = GENRES.find((genre) => genre.id === value);
-      return { label: genre.nameShort, value: genre.id };
+      return genre ? { label: genre.nameShort, value: genre.id } : { label: value, value };
     })}
     type="ui"
     useCheckboxes
     isMulti
     placeholder="Select genre"
-    options={GENRES.map((genre) => ({
-      label: genre.nameShort[0].toUpperCase() + genre.nameShort.substring(1),
-      value: genre.id,
-    }))}
+    options={[
+      ...values
+        .filter((value) => !GENRES.find((genre) => genre.id === value.toLowerCase()))
+        .map((value) => ({ label: value, value })),
+      ...GENRES.map((genre) => ({
+        label: genre.nameShort[0].toUpperCase() + genre.nameShort.substring(1),
+        value: genre.id,
+      })),
+    ]}
     closeMenuOnSelect={false}
     onChange={(option: Option<number>[]) => {
       onChange(option.map((item) => item.value));

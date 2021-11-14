@@ -27,7 +27,7 @@ export const Modal: React.FC<Props> = ({ children, isOpened, onClose }) => {
         }
       }}
     >
-      <div className={scss.window}>
+      <div className={scss.window} style={{ marginTop: `${document.documentElement.scrollTop + 175}px` }}>
         <div className={scss.topBar}>
           <button
             onClick={() => {
