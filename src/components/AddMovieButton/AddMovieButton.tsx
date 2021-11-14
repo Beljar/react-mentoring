@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
+import { initLoadMovies } from 'src/actions';
 import { apiPostMovie } from 'src/apiCall/apiCallMovies/apiPostMovie';
 import { Button } from 'src/components/ui/Button';
 import IconSuccess from 'src/components/ui/Icons/IconCheckedCircle.svg';
@@ -7,7 +9,11 @@ import { MovieForm } from '../MovieForm/MovieForm';
 import { MessageView } from '../ui/MessageView';
 import { Modal } from '../ui/Modal';
 
-export const AddMovieButton = () => {
+type Props = {
+  update?: () => void;
+};
+
+export const AddMovieButton: React.FC<Props> = ({ update }) => {
   const [modal, setModal] = React.useState<React.ReactElement>();
   const success = (
     <MessageView
@@ -20,8 +26,10 @@ export const AddMovieButton = () => {
     <MovieForm
       title="ADD MOVIE"
       onSubmit={(movie: Movie) => {
-        apiPostMovie(movie);
-        setModal(success);
+        apiPostMovie(movie).then(() => {
+          update?.();
+          setModal(success);
+        });
       }}
     />
   );
@@ -43,3 +51,9 @@ export const AddMovieButton = () => {
     </>
   );
 };
+
+const mapDispatchToProps = (dispatch) => ({
+  update: () => dispatch(initLoadMovies()),
+});
+
+export default connect(null, mapDispatchToProps)(AddMovieButton);

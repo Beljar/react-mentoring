@@ -17,7 +17,7 @@ export const MovieEdit: React.FC<Props> = ({ movie, onDone, update }) => (
     title="EDIT MOVIE"
     onSubmit={(editedMovie) => {
       apiPutMovie(editedMovie).then(() => {
-        update();
+        update?.();
         onDone();
       });
     }}
