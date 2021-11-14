@@ -3,7 +3,7 @@ import { GenresFilter } from 'src/components/GenresFilter';
 
 import { FILMS } from 'src/entities/movie/movie';
 import { Movie } from 'src/entities/movie';
-import { initLoadMovies, loadMovies, setSorting } from 'src/actions';
+import { initLoadMovies, loadMovies, setGenreFilter, setSorting } from 'src/actions';
 
 import { MovieCardsLst } from 'src/components/MovieCardsList/MovieCardsList';
 import { MovieCount } from 'src/components/MovieCount';
@@ -22,11 +22,12 @@ type Props = {
   movies?: Movie[];
   onLoad?: () => void;
   onSort?: (field: string) => void;
+  onFilter?: (field: string) => void;
   totalAmount?: number;
   isLoading?: boolean;
 };
 
-const Content: React.FC<Props> = ({ movies, totalAmount, isLoading, onLoad, onSort, onMovieClick }) => {
+const Content: React.FC<Props> = ({ movies, totalAmount, isLoading, onLoad, onSort, onFilter, onMovieClick }) => {
   const [activeFilterKey, setActiveFilterKey] = React.useState<string | number>('all');
   React.useEffect(() => {
     onLoad();
@@ -48,6 +49,7 @@ const Content: React.FC<Props> = ({ movies, totalAmount, isLoading, onLoad, onSo
         <GenresFilter
           activeFilterKey={activeFilterKey}
           onChange={(filterOption) => {
+            onFilter(filterOption.value);
             setActiveFilterKey(filterOption.key);
           }}
         />
@@ -77,6 +79,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onSort: (field: string) => dispatch(setSorting(field)),
+  onFilter: (filter: string) => dispatch(setGenreFilter(filter)),
   onLoad: () => dispatch(loadMovies()),
 });
 

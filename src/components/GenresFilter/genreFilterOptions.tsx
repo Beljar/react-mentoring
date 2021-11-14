@@ -6,10 +6,12 @@ export const GENRE_FILTER_OPTIONS: FilterOptionType<Movie>[] = [
   {
     key: 'all',
     display: 'ALL',
+    value: '',
     rule: (films: Movie[]) => films,
   },
   ...GENRES_MAIN.map((genre) => ({
-    key: genre.nameShort,
+    key: genre.id,
+    value: genre.id as string,
     display: genre.nameFull || genre.nameShort.toUpperCase(),
     rule: (films: Movie[]) => films.filter((film) => genre.id in film.genres),
   })),

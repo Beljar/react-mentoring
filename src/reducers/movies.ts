@@ -31,12 +31,14 @@ export const moviesReducer = (state = initialMovies, action) => {
       console.log('sorting');
       console.log(action.payload);
       return { ...initialMovies, request: { ...state.request, offset: 0, sortBy: action.payload } };
+    case 'SET_GENRE_FILTER':
+      return { ...initialMovies, request: { ...state.request, offset: 0, searchBy: 'genres', search: action.payload } };
     case 'SET_LOADING':
       console.log('set loading');
       return {
         ...state,
         isLoading: action.payload,
-      }
+      };
     default:
       return state;
   }
