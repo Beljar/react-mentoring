@@ -2,10 +2,8 @@ import { GENRES } from 'src/entities/genre';
 
 export const genresToString = (genres: string[]) =>
   genres
-    .map((genreId) => {
-      const genreObj = GENRES.find((genre) => genre.id === genreId);
-      return genreObj
-        ? genreObj.nameFull || genreObj.nameShort[0].toUpperCase() + genreObj.nameShort.substring(1)
-        : genreId;
+    .map((genreName) => {
+      const genreObj = GENRES.find((genre) => genre.value === genreName.toLowerCase());
+      return genreObj ? genreObj.label : genreName;
     })
     .join(', ');

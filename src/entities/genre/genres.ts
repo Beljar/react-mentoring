@@ -1,50 +1,45 @@
-import { Genre } from './GenreType';
+import { Option } from 'src/types';
 
-export const GENRES_MAIN: Genre[] = [
+export const GENRES_MAIN: Option<string>[] = [
   {
-    id: 'documentary',
-    nameShort: 'documentary',
+    label: 'documentary',
+    value: 'documentary',
   },
   {
-    id: 'comedy',
-    nameShort: 'comedy',
+    label: 'comedy',
+    value: 'comedy',
   },
   {
-    id: 'horror',
-    nameShort: 'horror',
+    label: 'horror',
+    value: 'horror',
   },
   {
-    id: 'crime',
-    nameShort: 'crime',
+    label: 'crime',
+    value: 'crime',
   },
 ];
 
-export const GENRES_SUPPLEMENTARY: Genre[] = [
+export const GENRES_SUPPLEMENTARY: Option<string>[] = [
   {
-    id: 'action',
-    nameShort: 'action',
+    label: 'action',
+    value: 'action',
   },
   {
-    id: 'adventure',
-    nameShort: 'adventure',
+    label: 'adventure',
+    value: 'adventure',
   },
   {
-    id: 'drama',
-    nameShort: 'drama',
+    label: 'drama',
+    value: 'drama',
   },
   {
-    id: 'biography',
-    nameShort: 'biography',
+    label: 'biography',
+    value: 'biography',
   },
   {
-    id: 'music',
-    nameShort: 'music',
-  },
-  {
-    id: 'oscar',
-    nameShort: 'oscar',
-    nameFull: 'Oscar winning Movie',
+    label: 'music',
+    value: 'music',
   },
 ];
 
-export const GENRES: Genre[] = [...GENRES_MAIN, ...GENRES_SUPPLEMENTARY];
+export const GENRES: Option<string>[] = [...GENRES_MAIN, ...GENRES_SUPPLEMENTARY];

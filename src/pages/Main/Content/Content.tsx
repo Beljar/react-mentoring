@@ -28,7 +28,7 @@ type Props = {
 };
 
 const Content: React.FC<Props> = ({ movies, totalAmount, isLoading, onLoad, onSort, onFilter, onMovieClick }) => {
-  const [activeFilterKey, setActiveFilterKey] = React.useState<string | number>('all');
+  const [activeFilterKey, setActiveFilterKey] = React.useState<string | number>('');
   React.useEffect(() => {
     onLoad();
   }, []);
@@ -47,10 +47,8 @@ const Content: React.FC<Props> = ({ movies, totalAmount, isLoading, onLoad, onSo
     <main className={scss.main}>
       <div className={scss.filterPanel}>
         <GenresFilter
-          activeFilterKey={activeFilterKey}
           onChange={(filterOption) => {
             onFilter(filterOption.value);
-            setActiveFilterKey(filterOption.key);
           }}
         />
         <Sorter
