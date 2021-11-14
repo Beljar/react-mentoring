@@ -22,7 +22,6 @@ export const AddMovieButton = () => {
       onSubmit={(movie: Movie) => {
         apiPostMovie(movie);
         setModal(success);
-        window.scroll(0, 0);
       }}
     />
   );

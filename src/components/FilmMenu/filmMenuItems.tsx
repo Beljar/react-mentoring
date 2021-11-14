@@ -6,6 +6,7 @@ import { MovieForm } from '../MovieForm/MovieForm';
 import { Button } from '../ui/Button';
 import { MessageView } from '../ui/MessageView';
 import { MovieDelete } from '../MovieDelete';
+import { MovieEdit } from '../MovieEdit';
 
 export const FILM_MENU_ITEMS = [
   {
@@ -13,10 +14,9 @@ export const FILM_MENU_ITEMS = [
     name: 'edit',
     action: (movie, setModal) => {
       setModal(
-        <MovieForm
-          movie={{ ...emptyMovie, ...movie }}
-          title="EDIT MOVIE"
-          onSubmit={() => {
+        <MovieEdit
+          movie={movie}
+          onDone={() => {
             setModal(
               <MessageView
                 icon={<IconSuccess />}
