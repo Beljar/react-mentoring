@@ -1,12 +1,22 @@
+import { connect } from 'react-redux';
 import * as React from 'react';
 
 import { Button } from 'src/components/ui/Button';
 import { Input } from 'src/components/ui/Input/Input';
 
+import { setSearch } from 'src/actions';
 import scss from './styles.scss';
 
-export const Search: React.FC = () => {
-  const [searchString, setSearchString] = React.useState('');
+type Props = {
+  searchString?: string;
+  onSearch?: (searchString) => void;
+};
+
+export const Search: React.FC<Props> = ({ searchString = '', onSearch }) => {
+  const [curSearchString, setCurSearchString] = React.useState('');
+  React.useEffect(() => {
+    setCurSearchString(searchString);
+  }, [searchString]);
   return (
     <div className={scss.search}>
       <div className={scss.searchBg} />
@@ -20,11 +30,21 @@ export const Search: React.FC = () => {
             <div className={scss.row}>
               <Input
                 id="search"
-                value={searchString}
+                value={curSearchString}
                 placeholder="What do you want to watch?"
-                onChange={(value) => setSearchString(value)}
+                onChange={(value) => {
+                  setCurSearchString(value);
+                }}
               />
-              <Button className={scss.searchBtn} width={223} height={57} type="filled">
+              <Button
+                className={scss.searchBtn}
+                width={223}
+                height={57}
+                type="filled"
+                onClick={() => {
+                  onSearch(curSearchString);
+                }}
+              >
                 Search
               </Button>
             </div>
@@ -34,3 +54,13 @@ export const Search: React.FC = () => {
     </div>
   );
 };
+
+const mapStateToProps = (state) => ({
+  searchString: state.request.searchBy === 'title' ? state.request.search : '',
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onSearch: (searchString) => dispatch(setSearch(searchString)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);
