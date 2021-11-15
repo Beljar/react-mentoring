@@ -1,24 +1,24 @@
 import { connect } from 'react-redux';
 import * as React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { Button } from 'src/components/ui/Button';
 import { Input } from 'src/components/ui/Input/Input';
 
-import { setSearch } from 'src/actions';
+import { loadMovies, setSearch } from 'src/actions';
+import { useParams, useLocation } from 'react-router';
 import scss from './styles.scss';
-
 
 type Props = {
   searchString?: string;
   onSearch?: (searchString) => void;
+  onLoad?: () => void;
 };
 
-export const Search: React.FC<Props> = ({ searchString = '', onSearch }) => {
+export const Search: React.FC<Props> = ({ searchString = '', onSearch, onLoad }) => {
   const [curSearchString, setCurSearchString] = React.useState('');
   const navigate = useNavigate();
   React.useEffect(() => {
-    navigate(`?search=${searchString}`);
     setCurSearchString(searchString);
   }, [searchString]);
   return (
@@ -46,7 +46,10 @@ export const Search: React.FC<Props> = ({ searchString = '', onSearch }) => {
                 height={57}
                 type="filled"
                 onClick={() => {
-                  onSearch(curSearchString);
+                  navigate({
+                    pathname: '/search',
+                    search: `?search=${curSearchString}`,
+                  });
                 }}
               >
                 Search
@@ -65,6 +68,10 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onSearch: (searchString) => dispatch(setSearch(searchString)),
+  onLoad: () => dispatch(loadMovies()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);
+function useQuery() {
+  throw new Error('Function not implemented.');
+}

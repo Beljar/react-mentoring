@@ -16,6 +16,7 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { Loader } from 'src/components/Loader';
 import scss from './styles.scss';
+import { useLocation } from 'react-router-dom';
 
 type Props = {
   onMovieClick: (movie: Movie) => void;
@@ -29,9 +30,6 @@ type Props = {
 
 const Content: React.FC<Props> = ({ movies, totalAmount, isLoading, onLoad, onSort, onFilter, onMovieClick }) => {
   const [activeFilterKey, setActiveFilterKey] = React.useState<string | number>('');
-  React.useEffect(() => {
-    onLoad();
-  }, []);
   React.useEffect(() => {
     document.addEventListener('scroll', (e) => {
       const {

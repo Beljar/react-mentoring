@@ -12,8 +12,22 @@ import { Content } from './Content';
 import { Footer } from './Footer/Footer';
 
 import scss from './main.scss';
+import { useLocation } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { setSearch } from 'src/actions';
 
-export const Main: React.FC = () => {
+type Props = {  
+  onSearch?: (searchString) => void;
+}
+
+export const Main: React.FC<Props> = ({ onSearch }) => {
+  const { search } = useLocation();
+  const params = new URLSearchParams(search);
+  const searchQuery = params.get('search');
+  console.log(searchQuery);
+  React.useEffect(() => {
+    onSearch(searchQuery || '');
+  });
   const [movie, setMovie] = React.useState<Movie>();
   const searchBtn = (
     <div className={scss.clickable} onClick={() => setMovie(undefined)}>
@@ -33,3 +47,9 @@ export const Main: React.FC = () => {
     </div>
   );
 };
+
+const mapDispatchToProps = (dispatch) => ({
+  onSearch: (searchString) => dispatch(setSearch(searchString)),
+});
+
+export default connect(null, mapDispatchToProps)(Main);
