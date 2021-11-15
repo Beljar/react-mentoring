@@ -1,11 +1,13 @@
 import { connect } from 'react-redux';
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { Button } from 'src/components/ui/Button';
 import { Input } from 'src/components/ui/Input/Input';
 
 import { setSearch } from 'src/actions';
 import scss from './styles.scss';
+
 
 type Props = {
   searchString?: string;
@@ -14,7 +16,9 @@ type Props = {
 
 export const Search: React.FC<Props> = ({ searchString = '', onSearch }) => {
   const [curSearchString, setCurSearchString] = React.useState('');
+  const navigate = useNavigate();
   React.useEffect(() => {
+    navigate(`?search=${searchString}`);
     setCurSearchString(searchString);
   }, [searchString]);
   return (
