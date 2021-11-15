@@ -4,7 +4,7 @@ import { PageWrapper } from 'src/components/PageWrapper';
 import { ErrorBoundary } from 'src/components/ErrorBoundary';
 import { Movie } from 'src/entities/movie';
 import { MovieDetails } from 'src/components/MovieDetails';
-import { AddMovieButton } from 'src/components/AddMovieButton/AddMovieButton';
+import { AddMovieButton } from 'src/components/AddMovieButton';
 import IconSearch from 'src/components/ui/Icons/IconSearch.svg';
 import { Search } from './Search';
 

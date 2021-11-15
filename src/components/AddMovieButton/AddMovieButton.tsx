@@ -27,6 +27,7 @@ export const AddMovieButton: React.FC<Props> = ({ update }) => {
       title="ADD MOVIE"
       onSubmit={(movie: Movie) => {
         apiPostMovie(movie).then(() => {
+          console.log(update)
           update?.();
           setModal(success);
         });
