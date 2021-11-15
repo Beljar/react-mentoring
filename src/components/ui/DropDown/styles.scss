@@ -1,0 +1,49 @@
+@import 'src/styles';
+
+.control {
+    display: flex;  
+    align-items: center;  
+    border: none;
+    cursor: pointer;
+    &.ui{
+        height: 57px;
+        background-color: $color-input-transparent;
+        border-radius: 4px;
+    }
+}
+
+.value {
+    display: flex;
+    align-items: center;
+    color: $color-text;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.menu {
+    background-color: $color-ui-bg-transparent;
+}
+
+.option {
+    padding: 9px 18px;
+    color: $color-text!important;
+    &.selected {
+        background-color: $color-main;
+    }
+    &.selected:hover {
+        background-color: $color-main-active;
+    }
+    &:active {
+        background-color: $color-main-active!important;
+    }
+    &:not(.selected):hover {
+        background-color: $color-secondary;
+    }
+}
+
+.placeholder {
+    width: 100%;
+}

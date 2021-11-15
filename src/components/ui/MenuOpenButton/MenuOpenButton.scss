@@ -1,0 +1,21 @@
+@import 'src/styles';
+
+.button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 18px;
+    background-color: $color-bg-main;
+    .dot {
+        width: 4px;
+        height: 4px;
+        border-radius: 3px;
+        background-color: $color-text;
+    }
+    & > *:not(:last-child) {
+        margin-bottom: 4px;
+    }
+}
