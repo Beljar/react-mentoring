@@ -23,7 +23,6 @@ export const setSorting = (field) => (dispatch, getState) => {
   const {
     request: { sortBy },
   } = getState();
-  console.log(sortBy);
   if (sortBy !== field) {
     dispatch({ type: 'DROP_OFFSET' });
     dispatch({ type: 'SET_SORTING', payload: field });

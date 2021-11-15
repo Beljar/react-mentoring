@@ -6,25 +6,24 @@ import { Movie } from 'src/entities/movie';
 import { MovieDetails } from 'src/components/MovieDetails';
 import { AddMovieButton } from 'src/components/AddMovieButton/AddMovieButton';
 import IconSearch from 'src/components/ui/Icons/IconSearch.svg';
+import { useLocation } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { setSearch } from 'src/actions';
 import { Search } from './Search';
 
 import { Content } from './Content';
 import { Footer } from './Footer/Footer';
 
 import scss from './main.scss';
-import { useLocation } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { setSearch } from 'src/actions';
 
-type Props = {  
+type Props = {
   onSearch?: (searchString) => void;
-}
+};
 
 export const Main: React.FC<Props> = ({ onSearch }) => {
   const { search } = useLocation();
   const params = new URLSearchParams(search);
   const searchQuery = params.get('search');
-  console.log(searchQuery);
   React.useEffect(() => {
     onSearch(searchQuery || '');
   });
