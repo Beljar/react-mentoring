@@ -2,13 +2,11 @@ import { apiGetMovies } from 'src/apiCall/apiCallMovies/apiGetMovies';
 
 
 export const initLoadMovies = () => (dispatch, getState) => {
-  console.log('init');
   dispatch({ type: 'DROP_OFFSET' });
   apiGetMovies(getState().request).then((result) => dispatch({ type: 'INIT_LOAD_MOVIES', payload: result }));
 };
 
 export const loadMovies = () => (dispatch, getState) => {
-  console.log('loadMovies');
   const { isLoading } = getState();
   if (!isLoading) {
     dispatch({ type: 'SET_LOADING', payload: true });
