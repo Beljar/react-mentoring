@@ -5,6 +5,9 @@ import { Option } from 'src/types';
 import { Movie } from 'src/entities/movie';
 import { FilterOptionType } from 'src/entities/filterOption';
 import { connect } from 'react-redux';
+import { useNavigate, useLocation } from 'react-router';
+import { Dispatch } from 'redux';
+import { setGenreFilter } from 'src/actions';
 import { GENRE_FILTER_OPTIONS } from './genreFilterOptions';
 
 import scss from './styles.scss';
@@ -12,18 +15,30 @@ import scss from './styles.scss';
 type Props = {
   activeFilterValue?: string;
   isFilterOn?: boolean;
+  onFilter?: (genre: string) => void;
   onChange: (filterOption: Option<string>) => void;
 };
 
-export const GenresFilter: React.FC<Props> = ({ activeFilterValue, isFilterOn, onChange }) => {
+export const GenresFilter: React.FC<Props> = ({ activeFilterValue, isFilterOn, onFilter, onChange }) => {
   const curFilterValue = isFilterOn ? activeFilterValue.toLowerCase() : '';
+  const navigate = useNavigate();
+  const { search } = useLocation();
   return (
     <ul className={scss.optionsList}>
       {GENRE_FILTER_OPTIONS.map((filterOption) => (
         <li
           key={filterOption.value}
           className={cn(scss.option, { [scss.active]: filterOption.value === curFilterValue })}
-          onClick={() => onChange(filterOption)}
+          onClick={() => {
+            const params = new URLSearchParams(search);
+            params.set('search', filterOption.value);
+            params.set('searchBy', 'genre');
+            navigate({
+              search: params.toString(),
+            }
+            );
+            onChange(filterOption);
+          }}
         >
           {filterOption.label}
         </li>
@@ -36,5 +51,6 @@ const mapStateToProps = (state) => ({
   isFilterOn: state.request.searchBy === 'genres',
   activeFilterValue: state.request.search,
 });
+
 
 export default connect(mapStateToProps)(GenresFilter);

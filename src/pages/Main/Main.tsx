@@ -8,7 +8,7 @@ import { AddMovieButton } from 'src/components/AddMovieButton/AddMovieButton';
 import IconSearch from 'src/components/ui/Icons/IconSearch.svg';
 import { useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { setSearch } from 'src/actions';
+import { loadMovies, setGenreFilter, setSearch, setSorting } from 'src/actions';
 import { Search } from './Search';
 
 import { Content } from './Content';
@@ -17,15 +17,28 @@ import { Footer } from './Footer/Footer';
 import scss from './main.scss';
 
 type Props = {
-  onSearch?: (searchString) => void;
+  onSearch?: (searchString: string) => void;
+  onFilter?: (genre: string) => void;
+  onSort?: (sortField: string) => void;
+  onLoad?: () => void;
 };
 
-export const Main: React.FC<Props> = ({ onSearch }) => {
+export const Main: React.FC<Props> = ({ onSearch, onFilter, onSort, onLoad }) => {
   const { search } = useLocation();
   const params = new URLSearchParams(search);
   const searchQuery = params.get('search');
+  const searchBy = params.get('searchBy');
+  const sortBy = params.get('sortBy');
   React.useEffect(() => {
-    onSearch(searchQuery || '');
+    if (searchBy === 'genre' && searchQuery) {
+      onFilter(searchQuery);
+    } else {
+      onSearch(searchQuery || '');
+    }
+    if (sortBy) {
+      onSort(sortBy);
+    }
+    onLoad();
   });
   const [movie, setMovie] = React.useState<Movie>();
   const searchBtn = (
@@ -49,6 +62,9 @@ export const Main: React.FC<Props> = ({ onSearch }) => {
 
 const mapDispatchToProps = (dispatch) => ({
   onSearch: (searchString) => dispatch(setSearch(searchString)),
+  onFilter: (genre: string) => dispatch(setGenreFilter(genre)),
+  onSort: (sortField: string) => dispatch(setSorting(sortField)),
+  onLoad: () => dispatch(loadMovies()),
 });
 
 export default connect(null, mapDispatchToProps)(Main);

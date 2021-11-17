@@ -9,24 +9,14 @@ export const App = () => (
   <Router>
     <Routes>
       <Route path="/" element={<Navigate to="search" />} />
-      <Route path="search">
-        <Route
-          path=":searchParam"
-          element={
-            <Provider store={store}>
-              <Main />
-            </Provider>
-          }
-        />
-        <Route
-          path=""
-          element={
-            <Provider store={store}>
-              <Main />
-            </Provider>
-          }
-        />
-      </Route>
+      <Route
+        path="search"
+        element={
+          <Provider store={store}>
+            <Main />
+          </Provider>
+        }
+      />
     </Routes>
   </Router>
 );

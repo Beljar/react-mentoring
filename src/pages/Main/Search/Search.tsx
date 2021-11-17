@@ -48,7 +48,7 @@ export const Search: React.FC<Props> = ({ searchString = '', onSearch, onLoad })
                 onClick={() => {
                   navigate({
                     pathname: '/search',
-                    search: `?search=${curSearchString}`,
+                    search: `?search=${curSearchString}&searchBy=title`,
                   });
                 }}
               >
