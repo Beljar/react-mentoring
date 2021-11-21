@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import * as React from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-
+import { useQuery } from 'src/hooks/useQuery';
 import { Button } from 'src/components/ui/Button';
 import { Input } from 'src/components/ui/Input/Input';
 
@@ -17,7 +17,7 @@ type Props = {
 
 export const Search: React.FC<Props> = ({ searchString = '', onSearch, onLoad }) => {
   const [curSearchString, setCurSearchString] = React.useState('');
-  const navigate = useNavigate();
+  const [, setQuery] = useQuery();
   React.useEffect(() => {
     setCurSearchString(searchString);
   }, [searchString]);
@@ -46,10 +46,7 @@ export const Search: React.FC<Props> = ({ searchString = '', onSearch, onLoad })
                 height={57}
                 type="filled"
                 onClick={() => {
-                  navigate({
-                    pathname: '/search',
-                    search: `?search=${curSearchString}&searchBy=title`,
-                  });
+                  setQuery({ search: curSearchString, searchBy: 'title' });
                 }}
               >
                 Search
@@ -72,6 +69,3 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);
-function useQuery() {
-  throw new Error('Function not implemented.');
-}

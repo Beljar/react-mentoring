@@ -12,7 +12,7 @@ type Props = {
 };
 
 export const Sorter: React.FC<Props> = ({ onChange }) => {
-  const [getParam, setParam] = useQuery();
+  const [, setQuery] = useQuery();
 
   const [curOption, setCurOption] = React.useState(getSorterInitialOption());
   React.useEffect(() => {
@@ -26,9 +26,8 @@ export const Sorter: React.FC<Props> = ({ onChange }) => {
         value={curOption}
         options={SORTINGS}
         onChange={(option: Option<string>) => {
-          console.log(option);
           setCurOption(option);
-          setParam({ sortBy: option.value });
+          setQuery({ sortBy: option.value });
         }}
       />
     </div>

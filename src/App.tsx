@@ -17,6 +17,15 @@ export const App = () => (
           </Provider>
         }
       />
+      <Route
+        path="search/:searchQuery"
+        element={
+          <Provider store={store}>
+            <Main />
+          </Provider>
+        }
+      />
+      <Route path="*" element={<div>404</div>} />
     </Routes>
   </Router>
 );

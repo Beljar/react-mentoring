@@ -6,9 +6,11 @@ import { Movie } from 'src/entities/movie';
 import { MovieDetails } from 'src/components/MovieDetails';
 import { AddMovieButton } from 'src/components/AddMovieButton/AddMovieButton';
 import IconSearch from 'src/components/ui/Icons/IconSearch.svg';
-import { useLocation } from 'react-router-dom';
+import { generatePath, useLocation, useMatch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loadMovies, setGenreFilter, setSearch, setSorting } from 'src/actions';
+import { useParams } from 'react-router';
+import { useQuery } from 'src/hooks/useQuery';
 import { Search } from './Search';
 
 import { Content } from './Content';
@@ -24,16 +26,15 @@ type Props = {
 };
 
 export const Main: React.FC<Props> = ({ onSearch, onFilter, onSort, onLoad }) => {
-  const { search } = useLocation();
-  const params = new URLSearchParams(search);
-  const searchQuery = params.get('search');
-  const searchBy = params.get('searchBy');
-  const sortBy = params.get('sortBy');
+  const [getQuery] = useQuery();
+  const searchString = getQuery('search');
+  const searchBy = getQuery('searchBy');
+  const sortBy = getQuery('sortBy');
   React.useEffect(() => {
-    if (searchBy === 'genre' && searchQuery) {
-      onFilter(searchQuery);
+    if (searchBy === 'genre' && searchString) {
+      onFilter(searchString);
     } else {
-      onSearch(searchQuery || '');
+      onSearch(searchString || '');
     }
     if (sortBy) {
       onSort(sortBy);
