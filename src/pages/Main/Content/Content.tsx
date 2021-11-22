@@ -19,7 +19,7 @@ import { useLocation } from 'react-router-dom';
 import scss from './styles.scss';
 
 type Props = {
-  onMovieClick: (movie: Movie) => void;
+  onMovieClick?: (movie: Movie) => void;
   movies?: Movie[];
   onLoad?: () => void;
   onSort?: (field: string) => void;
@@ -56,7 +56,7 @@ const Content: React.FC<Props> = ({ movies, totalAmount, isLoading, onLoad, onSo
       </div>
       <Separator />
       <MovieCount count={totalAmount} />
-      <MovieCardsLst movies={movies} onMovieClick={onMovieClick} />
+      <MovieCardsLst movies={movies} onMovieClick={(movie) => onMovieClick?.(movie)} />
       {isLoading && (
         <div className={scss.center}>
           <Loader />

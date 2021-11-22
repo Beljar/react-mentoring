@@ -30,7 +30,8 @@ export const GenresFilter: React.FC<Props> = ({ activeFilterValue, isFilterOn, o
           key={filterOption.value}
           className={cn(scss.option, { [scss.active]: filterOption.value === curFilterValue })}
           onClick={() => {
-            setQuery({ search: filterOption.value, searchBy: filterOption.value ? 'genre' : '' });
+            console.log(filterOption.value)
+            setQuery({ searchBy: filterOption.value ? 'genre' : '' }, filterOption.value);
             onChange(filterOption);
           }}
         >

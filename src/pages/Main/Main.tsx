@@ -1,4 +1,7 @@
 import * as React from 'react';
+import { useLocation, useParams } from 'react-router';
+import { connect } from 'react-redux';
+
 import { Header } from 'src/pages/Main/Header';
 import { PageWrapper } from 'src/components/PageWrapper';
 import { ErrorBoundary } from 'src/components/ErrorBoundary';
@@ -6,13 +9,10 @@ import { Movie } from 'src/entities/movie';
 import { MovieDetails } from 'src/components/MovieDetails';
 import { AddMovieButton } from 'src/components/AddMovieButton/AddMovieButton';
 import IconSearch from 'src/components/ui/Icons/IconSearch.svg';
-import { generatePath, useLocation, useMatch } from 'react-router-dom';
-import { connect } from 'react-redux';
 import { loadMovies, setGenreFilter, setSearch, setSorting } from 'src/actions';
-import { useParams } from 'react-router';
 import { useQuery } from 'src/hooks/useQuery';
+import { apiGetMovie } from 'src/apiCall/apiCallMovies';
 import { Search } from './Search';
-
 import { Content } from './Content';
 import { Footer } from './Footer/Footer';
 
@@ -26,10 +26,10 @@ type Props = {
 };
 
 export const Main: React.FC<Props> = ({ onSearch, onFilter, onSort, onLoad }) => {
-  const [getQuery] = useQuery();
-  const searchString = getQuery('search');
-  const searchBy = getQuery('searchBy');
-  const sortBy = getQuery('sortBy');
+  const [movie, setMovie] = React.useState<Movie>();
+  const { searchQuery: searchString } = useParams();
+  const [query, setQuery] = useQuery();
+  const { searchBy, sortBy, movie: movieId } = query;
   React.useEffect(() => {
     if (searchBy === 'genre' && searchString) {
       onFilter(searchString);
@@ -39,11 +39,20 @@ export const Main: React.FC<Props> = ({ onSearch, onFilter, onSort, onLoad }) =>
     if (sortBy) {
       onSort(sortBy);
     }
+    if (movieId && movieId !== movie?.id) {
+      apiGetMovie(movieId).then(setMovie);
+    }
     onLoad();
   });
-  const [movie, setMovie] = React.useState<Movie>();
+
   const searchBtn = (
-    <div className={scss.clickable} onClick={() => setMovie(undefined)}>
+    <div
+      className={scss.clickable}
+      onClick={() => {
+        setMovie(undefined);
+        setQuery({ movie: undefined });
+      }}
+    >
       <IconSearch />
     </div>
   );
@@ -53,7 +62,7 @@ export const Main: React.FC<Props> = ({ onSearch, onFilter, onSort, onLoad }) =>
         <Header className={movie ? scss.background : scss.absolute}>{movie ? searchBtn : <AddMovieButton />}</Header>
         {movie ? <MovieDetails movie={movie} /> : <Search />}
         <ErrorBoundary>
-          <Content onMovieClick={setMovie} />
+          <Content />
         </ErrorBoundary>
         <Footer />
       </PageWrapper>

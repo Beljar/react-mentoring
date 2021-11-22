@@ -46,7 +46,7 @@ export const Search: React.FC<Props> = ({ searchString = '', onSearch, onLoad })
                 height={57}
                 type="filled"
                 onClick={() => {
-                  setQuery({ search: curSearchString, searchBy: 'title' });
+                  setQuery({ searchBy: 'title' }, curSearchString);
                 }}
               >
                 Search
