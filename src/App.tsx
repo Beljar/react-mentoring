@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 
 import { Main } from './pages/Main';
+import { NotFound } from './pages/NotFound';
 import { store } from './reducers/movies';
 
 export const App = () => (
@@ -25,7 +26,7 @@ export const App = () => (
           </Provider>
         }
       />
-      <Route path="*" element={<div>404</div>} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   </Router>
 );
