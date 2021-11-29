@@ -16,7 +16,6 @@ type Props = {
 };
 
 export const GenresFilter: React.FC<Props> = ({ activeFilterValue, isFilterOn, onChange }) => {
-  console.log(activeFilterValue)
   const curFilterValue = isFilterOn ? activeFilterValue.toLowerCase() : '';
   return (
   <ul className={scss.optionsList}>

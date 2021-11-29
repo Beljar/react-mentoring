@@ -57,8 +57,6 @@ export const Form: <Entity extends object>(props: Props<Entity>) => JSX.Element 
     },
   });
 
-  console.log(values);
-
   return (
     <form className={className} onSubmit={handleSubmit} onReset={handleReset}>
       <h1 className={scss.title}>{title}</h1>
@@ -72,7 +70,6 @@ export const Form: <Entity extends object>(props: Props<Entity>) => JSX.Element 
             error={errors?.[field.key] as string}
           >
             {field.drawControl(values[field.key], (value) => {
-              console.log(value)
               setFieldValue(field.key, value);
             })}
           </FormItem>

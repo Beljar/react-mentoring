@@ -16,11 +16,8 @@ export const moviesReducer = (state = initialMovies, action) => {
     case 'DROP_OFFSET':
       return { ...state, request: { ...state.request, offset: 0 } };
     case 'INIT_LOAD_MOVIES':
-      console.log('init');
       return { ...initialMovies, ...action.payload };
     case 'LOAD_MOVIES':
-      console.log('load');
-      console.log(action.payload);
       return {
         ...state,
         ...action.payload,
@@ -28,15 +25,12 @@ export const moviesReducer = (state = initialMovies, action) => {
         request: { ...state.request, offset: state.request.offset + state.request.limit },
       };
     case 'SET_SORTING':
-      console.log('sorting');
-      console.log(action.payload);
       return { ...initialMovies, request: { ...state.request, offset: 0, sortBy: action.payload } };
     case 'SET_GENRE_FILTER':
       return { ...initialMovies, request: { ...state.request, offset: 0, searchBy: 'genres', search: action.payload } };
     case 'SET_SEARCH':
       return { ...initialMovies, request: { ...state.request, offset: 0, searchBy: 'title', search: action.payload } };
     case 'SET_LOADING':
-      console.log('set loading');
       return {
         ...state,
         isLoading: action.payload,

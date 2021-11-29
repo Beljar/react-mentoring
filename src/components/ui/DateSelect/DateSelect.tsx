@@ -14,8 +14,6 @@ type Props = {
 
 export const DateSelect: React.FC<Props> = ({ placeholder, value = '', onChange }) => {
   const [startDate, setStartDate] = React.useState(value ? new Date(value) : '');
-  console.log(value)
-  console.log(startDate)
   type PropsInput = {
     value?: string;
     onClick?: () => void;
@@ -27,8 +25,6 @@ export const DateSelect: React.FC<Props> = ({ placeholder, value = '', onChange 
     <DatePicker
       selected={startDate}
       onChange={(date) => {
-        console.log(date)
-        console.log(dateToString(date))
         setStartDate(date);
         onChange(dateToString(date));
       }}
