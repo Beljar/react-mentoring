@@ -7,6 +7,7 @@ import { genresToString } from 'src/utils/genresTostring';
 import scss from './MovieCard.scss';
 import { FilmMenu } from '../FilmMenu';
 import { Modal } from '../ui/Modal';
+import { MovieImage } from '../MovieImage';
 
 type Props = {
   movie: Movie;
@@ -36,15 +37,7 @@ export const MovieCard: React.FC<Props> = ({ movie, className, onClick }: Props)
         }}
       />
       <div className={scss.clickable} onClick={onClick}>
-        <img
-          className={scss.cover}
-          src={movie.posterPath}
-          alt={movie.title}
-          onError={(e: React.SyntheticEvent) => {
-            const img: HTMLImageElement = e.target as HTMLImageElement;
-            img.src = '/assets/covers/not_found.jpg';
-          }}
-        />
+        <MovieImage className={scss.cover} src={movie.posterPath} alt={movie.title} />
         <div className={scss.titleBlock}>
           <h3 className={scss.title}>{movie.title}</h3>
           <div className={scss.year}>{new Date(movie.releaseDate).getFullYear()}</div>
