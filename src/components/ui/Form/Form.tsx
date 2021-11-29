@@ -37,7 +37,6 @@ export const Form: <Entity extends object>(props: Props<Entity>) => JSX.Element 
   initialValues,
   onSubmit,
 }) => {
-console.log(initialValues);
 
   const validate = (values) =>
     Object.entries(values).reduce((acc, [key, value]) => {
@@ -57,6 +56,9 @@ console.log(initialValues);
       formik.resetForm;
     },
   });
+
+  console.log(values);
+
   return (
     <form className={className} onSubmit={handleSubmit} onReset={handleReset}>
       <h1 className={scss.title}>{title}</h1>
@@ -70,6 +72,7 @@ console.log(initialValues);
             error={errors?.[field.key] as string}
           >
             {field.drawControl(values[field.key], (value) => {
+              console.log(value)
               setFieldValue(field.key, value);
             })}
           </FormItem>
