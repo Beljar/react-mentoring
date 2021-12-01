@@ -8,6 +8,7 @@ import { useQuery } from 'src/hooks/useQuery';
 import scss from './MovieCard.scss';
 import { FilmMenu } from '../FilmMenu';
 import { Modal } from '../ui/Modal';
+import { MovieImage } from '../MovieImage';
 
 type Props = {
   movie: Movie;

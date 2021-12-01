@@ -4,6 +4,7 @@ import { Input } from '../Input';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import scss from './dateSelect.scss';
+import { dateToString } from 'src/utils/formatters';
 
 type Props = {
   placeholder?: string;
@@ -25,7 +26,7 @@ export const DateSelect: React.FC<Props> = ({ placeholder, value = '', onChange 
       selected={startDate}
       onChange={(date) => {
         setStartDate(date);
-        onChange(date);
+        onChange(dateToString(date));
       }}
       customInput={<DataInput />}
     />
