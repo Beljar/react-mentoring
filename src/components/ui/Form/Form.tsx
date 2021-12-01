@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Movie } from 'src/entities/film/FilmType';
+import { Movie } from 'src/entities/movie/MovieType';
 import { useFormik } from 'formik';
 import { Button } from '../Button';
 import { FormFieldType } from './FormFieldType';
@@ -37,6 +37,7 @@ export const Form: <Entity extends object>(props: Props<Entity>) => JSX.Element 
   initialValues,
   onSubmit,
 }) => {
+
   const validate = (values) =>
     Object.entries(values).reduce((acc, [key, value]) => {
       const field = fields.find((field) => field.key === key);
@@ -46,6 +47,7 @@ export const Form: <Entity extends object>(props: Props<Entity>) => JSX.Element 
 
   const { values, setFieldValue, errors, handleSubmit, handleReset } = useFormik({
     initialValues,
+    validateOnChange: false,
     validate,
     onSubmit: (values) => {
       onSubmit(values);
@@ -54,6 +56,7 @@ export const Form: <Entity extends object>(props: Props<Entity>) => JSX.Element 
       formik.resetForm;
     },
   });
+
   return (
     <form className={className} onSubmit={handleSubmit} onReset={handleReset}>
       <h1 className={scss.title}>{title}</h1>

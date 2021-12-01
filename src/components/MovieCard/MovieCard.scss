@@ -4,6 +4,9 @@
     position: relative;
     width: 322px;
     height: 524;
+    .clickable {
+        cursor: pointer;
+    }
     .menu {
         display: block;
         position: absolute;

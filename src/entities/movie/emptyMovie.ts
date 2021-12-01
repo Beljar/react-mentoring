@@ -5,8 +5,8 @@ export const emptyMovie: Movie = {
   title: '',
   genres: [],
   releaseDate: '',
-  duration: null,
-  rating: null,
-  url: '',
-  description: '',
+  runtime: null,
+  voteAverage: null,
+  posterPath: '',
+  overview: '',
 };

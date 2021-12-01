@@ -3,11 +3,11 @@ import { GenreName } from '../genre/GenreType';
 export type Movie = {
   id: string;
   title: string;
-  genres: number[];
+  genres: string[];
   releaseDate: string;
-  duration: number;
-  rating: number;
-  coverUrl?: string;
+  runtime: number;
+  voteAverage: number;
+  posterPath?: string;
   url?: string;
-  description?: string;
+  overview?: string;
 };

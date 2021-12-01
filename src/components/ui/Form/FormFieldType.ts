@@ -2,7 +2,7 @@ import React from 'react';
 
 export type FormRule<T> = (value: T) => string | null;
 
-export type FormEntryValue = string | number | number[];
+export type FormEntryValue = string | number | string[] | number[];
 
 export type FormFieldType<T = string> = {
   label?: string;

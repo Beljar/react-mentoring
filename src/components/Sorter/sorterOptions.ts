@@ -1,20 +1,19 @@
-import { Movie } from 'src/entities/film';
+import { setSorting } from 'src/actions';
+import { Movie, MOVIES_INITIAL_REQUEST } from 'src/entities/movie';
 
 export const SORTINGS = [
   {
     label: 'RELEASE DATE',
-    value: '1',
-    rule: (movies: Movie[]) =>
-      movies.sort((a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime()),
+    value: 'release_date',
   },
   {
     label: 'RATING',
-    value: '2',
-    rule: (movies: Movie[]) => movies.sort((a, b) => b.rating - a.rating),
+    value: 'vote_average',
   },
   {
     label: 'DURATION',
-    value: '3',
-    rule: (movies: Movie[]) => movies.sort((a, b) => b.duration - a.duration),
+    value: 'runtime',
   },
 ];
+
+export const getSorterInitialOption = () => SORTINGS.find((sorting) => sorting.value === MOVIES_INITIAL_REQUEST.sortBy);

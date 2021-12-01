@@ -1,3 +1,17 @@
+@import 'src/styles';
+
 .main {
-    position: relative;
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.background {
+  background-color: $color-bg-main;
 }

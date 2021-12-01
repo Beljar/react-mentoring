@@ -1,35 +1,80 @@
 import * as React from 'react';
 import { GenresFilter } from 'src/components/GenresFilter';
 
-import { FILMS } from 'src/entities/film/films';
+import { Movie } from 'src/entities/movie';
+import { loadMovies, setGenreFilter, setSorting } from 'src/actions';
 
 import { MovieCardsLst } from 'src/components/MovieCardsList/MovieCardsList';
 import { MovieCount } from 'src/components/MovieCount';
 import { Sorter } from 'src/components/Sorter';
 import { Separator } from 'src/components/ui/Separator';
 
+import { connect } from 'react-redux';
+
+import { Loader } from 'src/components/Loader';
 import scss from './styles.scss';
 
-export const Content = () => {
-  const [activeFilterKey, setActiveFilterKey] = React.useState<string | number>('all');
-  const [movies, setMovies] = React.useState(FILMS);
+type Props = {
+  onMovieClick: (movie: Movie) => void;
+  movies?: Movie[];
+  onLoad?: () => void;
+  onSort?: (field: string) => void;
+  onFilter?: (field: string) => void;
+  totalAmount?: number;
+  isLoading?: boolean;
+};
+
+const Content: React.FC<Props> = ({ movies, totalAmount, isLoading, onLoad, onSort, onFilter, onMovieClick }) => {
+  React.useEffect(() => {
+    onLoad();
+  }, []);
+  React.useEffect(() => {
+    document.addEventListener('scroll', () => {
+      const {
+        documentElement: { scrollHeight, clientHeight, scrollTop },
+      } = document;
+      if (Math.ceil(clientHeight + scrollTop) >= scrollHeight) {
+        onLoad();
+      }
+    });
+  }, []);
 
   return (
     <main className={scss.main}>
       <div className={scss.filterPanel}>
         <GenresFilter
-          activeFilterKey={activeFilterKey}
-          onChange={(filterOption) => setActiveFilterKey(filterOption.key)}
+          onChange={(filterOption) => {
+            onFilter(filterOption.value);
+          }}
         />
         <Sorter
-          onChange={(rule) => {
-            setMovies([...rule(movies)]);
+          onChange={(sortBy) => {
+            onSort(sortBy);
           }}
         />
       </div>
       <Separator />
-      <MovieCount count={39} />
-      <MovieCardsLst movies={movies} />
+      <MovieCount count={totalAmount} />
+      <MovieCardsLst movies={movies} onMovieClick={onMovieClick} />
+      {isLoading && (
+        <div className={scss.center}>
+          <Loader />
+        </div>
+      )}
     </main>
   );
 };
+
+const mapStateToProps = (state) => ({
+  movies: state.data,
+  totalAmount: state.totalAmount,
+  isLoading: state.isLoading,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onSort: (field: string) => dispatch(setSorting(field)),
+  onFilter: (filter: string) => dispatch(setGenreFilter(filter)),
+  onLoad: () => dispatch(loadMovies()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Content);

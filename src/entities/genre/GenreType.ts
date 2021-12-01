@@ -1,5 +1,6 @@
 export type GenreName =
   | 'action'
+  | 'adventure'
   | 'drama'
   | 'biography'
   | 'music'

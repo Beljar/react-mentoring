@@ -1,15 +1,18 @@
 import * as React from 'react';
-import { AddMovieButton } from 'src/components/AddMovieButton/AddMovieButton';
-import { Logo } from 'src/components/Logo/Logo';
+import cn from 'classnames';
 
-import { Button } from 'src/components/ui/Button';
-import { Input } from 'src/components/ui/Input/Input';
+import { Logo } from 'src/components/Logo/Logo';
 
 import scss from './styles.scss';
 
-export const Header: React.FC = () => (
-  <header className={scss.header}>
+type Props = {
+  className?: string;
+  children?: React.ReactNode;
+};
+
+export const Header: React.FC<Props> = ({ className, children }) => (
+  <header className={cn(scss.header, className)}>
     <Logo />
-    <AddMovieButton />
+    {children}
   </header>
 );

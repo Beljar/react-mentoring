@@ -1,0 +1,15 @@
+.loader {
+  animation: blink 0.3s infinite;
+}
+
+@keyframes blink {
+  0% {
+      filter: brightness(0.4);
+  }
+  50% {
+    filter: brightness(0.7);
+  }
+  100% {
+    filter: brightness(0.4);
+}
+}

@@ -1,16 +1,12 @@
-import { Movie } from 'src/entities/film';
+import { Movie } from 'src/entities/movie';
 import { FilterOptionType } from 'src/entities/filterOption';
 import { GENRES_MAIN } from 'src/entities/genre';
+import { Option } from 'src/types';
 
-export const GENRE_FILTER_OPTIONS: FilterOptionType<Movie>[] = [
+export const GENRE_FILTER_OPTIONS: Option<string>[] = [
   {
-    key: 'all',
-    display: 'ALL',
-    rule: (films: Movie[]) => films,
+    label: 'all',
+    value: '',
   },
-  ...GENRES_MAIN.map((genre) => ({
-    key: genre.nameShort,
-    display: genre.nameFull || genre.nameShort.toUpperCase(),
-    rule: (films: Movie[]) => films.filter((film) => genre.id in film.genres),
-  })),
+  ...GENRES_MAIN,
 ];

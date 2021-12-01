@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { emptyMovie, Movie } from 'src/entities/film';
+import { emptyMovie, Movie } from 'src/entities/movie';
+import { GENRES } from 'src/entities/genre';
 import { Form } from '../ui/Form';
 import { MOVIE_FORM_FIELDS } from './movieFormFields';
 
@@ -16,7 +17,10 @@ export const MovieForm: React.FC<Props> = ({ movie = emptyMovie, title, onSubmit
     className={scss.form}
     title={title}
     fields={MOVIE_FORM_FIELDS}
-    initialValues={movie}
+    initialValues={{
+      ...movie,
+      genres: movie.genres.map((genreName) => genreName.toLowerCase()),
+    }}
     onSubmit={(movie) => {
       onSubmit?.(movie);
     }}
