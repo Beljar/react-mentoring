@@ -4,6 +4,8 @@ import { genresToString } from 'src/utils/genresTostring';
 import cn from 'classnames';
 
 import { minutesToString } from 'src/utils/minutesToString';
+import { MovieImage } from 'src/components/MovieImage';
+
 import scss from './movieDetails.scss';
 
 type Props = {
@@ -12,7 +14,7 @@ type Props = {
 
 export const MovieDetails: React.FC<Props> = ({ movie }) => (
   <div className={scss.root}>
-    <img className={scss.cover} src={movie.posterPath} alt={movie.title} />
+    <MovieImage className={scss.cover} src={movie.posterPath} alt={movie.title} />
     <div className={scss.textBlock}>
       <div className={scss.row}>
         <h3 className={scss.title}>{movie.title}</h3>
