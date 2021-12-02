@@ -1,4 +1,4 @@
-import { apiGetMovies } from 'src/apiCall/apiCallMovies/apiGetMovies';
+import { apiGetMovies } from 'src/apiCall/apiCallMovies';
 
 export const initLoadMovies = () => (dispatch, getState) => {
   dispatch({ type: 'DROP_OFFSET' });
