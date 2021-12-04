@@ -15,7 +15,6 @@ export const useQuery: <T = SearchQuery>() => [T, (params: object, searchString?
         params.delete(entry[0]);
       }
     });
-    console.log(searchString);
     navigate({
       pathname: generatePath('/search/:searchQuery', {
         searchQuery: searchString === undefined ? searchQuery || '' : searchString,

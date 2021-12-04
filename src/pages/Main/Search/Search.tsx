@@ -1,12 +1,10 @@
 import { connect } from 'react-redux';
 import * as React from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useQuery } from 'src/hooks/useQuery';
 import { Button } from 'src/components/ui/Button';
 import { Input } from 'src/components/ui/Input/Input';
 
 import { loadMovies, setSearch } from 'src/actions';
-import { useParams, useLocation } from 'react-router';
 import scss from './styles.scss';
 
 type Props = {
