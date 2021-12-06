@@ -23,18 +23,15 @@ export const setSorting = (field) => (dispatch, getState) => {
   if (sortBy !== field) {
     dispatch({ type: 'DROP_OFFSET' });
     dispatch({ type: 'SET_SORTING', payload: field });
-    dispatch(loadMovies());
   }
 };
 
 export const setGenreFilter = (genre) => (dispatch) => {
   dispatch({ type: 'DROP_OFFSET' });
   dispatch({ type: 'SET_GENRE_FILTER', payload: genre });
-  dispatch(loadMovies());
 };
 
 export const setSearch = (searchString) => (dispatch) => {
   dispatch({ type: 'DROP_OFFSET' });
   dispatch({ type: 'SET_SEARCH', payload: searchString });
-  dispatch(loadMovies());
 };

@@ -12,10 +12,11 @@ import { Separator } from 'src/components/ui/Separator';
 import { connect } from 'react-redux';
 
 import { Loader } from 'src/components/Loader';
+import { useLocation } from 'react-router-dom';
 import scss from './styles.scss';
 
 type Props = {
-  onMovieClick: (movie: Movie) => void;
+  onMovieClick?: (movie: Movie) => void;
   movies?: Movie[];
   onLoad?: () => void;
   onSort?: (field: string) => void;
@@ -25,9 +26,6 @@ type Props = {
 };
 
 const Content: React.FC<Props> = ({ movies, totalAmount, isLoading, onLoad, onSort, onFilter, onMovieClick }) => {
-  React.useEffect(() => {
-    onLoad();
-  }, []);
   React.useEffect(() => {
     document.addEventListener('scroll', () => {
       const {
@@ -55,7 +53,7 @@ const Content: React.FC<Props> = ({ movies, totalAmount, isLoading, onLoad, onSo
       </div>
       <Separator />
       <MovieCount count={totalAmount} />
-      <MovieCardsLst movies={movies} onMovieClick={onMovieClick} />
+      <MovieCardsLst movies={movies} onMovieClick={(movie) => onMovieClick?.(movie)} />
       {isLoading && (
         <div className={scss.center}>
           <Loader />

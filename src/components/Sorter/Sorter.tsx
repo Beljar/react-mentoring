@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useQuery } from 'src/hooks/useQuery';
 import { Option } from 'src/types';
 
 import DropDown from '../ui/DropDown/DropDown';
@@ -11,9 +12,11 @@ type Props = {
 };
 
 export const Sorter: React.FC<Props> = ({ onChange }) => {
+  const [, setQuery] = useQuery();
+
   const [curOption, setCurOption] = React.useState(getSorterInitialOption());
   React.useEffect(() => {
-    onChange(curOption.value);
+    // onChange(curOption.value);
   }, [curOption]);
   return (
     <div className={scss.sorter}>
@@ -22,7 +25,10 @@ export const Sorter: React.FC<Props> = ({ onChange }) => {
         className={scss.dropdown}
         value={curOption}
         options={SORTINGS}
-        onChange={(option) => setCurOption(option as Option<string>)}
+        onChange={(option: Option<string>) => {
+          setCurOption(option);
+          setQuery({ sortBy: option.value });
+        }}
       />
     </div>
   );

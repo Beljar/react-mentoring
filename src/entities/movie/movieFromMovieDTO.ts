@@ -1,7 +1,7 @@
-import { emptyMovie } from '.';
+import { emptyMovie, Movie } from '.';
 
-export const movieFromMovieDTO = (responseDTO) => ({
-  id: responseDTO.id,
+export const movieFromMovieDTO = (responseDTO): Movie => ({
+  id: String(responseDTO.id),
   title: responseDTO.title,
   genres: responseDTO.genres,
   releaseDate: responseDTO.release_date,
