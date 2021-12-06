@@ -2,6 +2,7 @@ const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+  mode: process.env.NODE_ENV,
   entry: './src/index.jsx',
   output: {
     publicPath: '/',
@@ -9,10 +10,10 @@ module.exports = {
     chunkFilename: '[name].bundle.js',
   },
   resolve: {
-    modules: [path.resolve(__dirname, 'node_modules')],
+    modules: [path.resolve(__dirname, '..', 'node_modules')],
     extensions: ['.jsx', '.tsx', '.js', '.ts', '.json', '.scss'],
     alias: {
-      src: path.resolve(__dirname, 'src'),
+      src: path.resolve(__dirname, '..', 'src'),
     },
   },
   devtool: 'source-map',
@@ -22,7 +23,7 @@ module.exports = {
     port: 3000,
     open: true,
     static: {
-      directory: path.resolve(__dirname, './public/assets'),
+      directory: path.resolve(__dirname, '..', './public/assets'),
       publicPath: '/assets',
     },
   },
@@ -33,7 +34,7 @@ module.exports = {
   },
   plugins: [
     new HTMLWebpackPlugin({
-      template: path.resolve(__dirname, './public/index.html'),
+      template: path.resolve(__dirname, '..', './public/index.html'),
       filename: 'index.html',
     }),
   ],

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import DatePicker from 'react-datepicker';
+import { dateToString } from 'src/utils/formatters';
 import { Input } from '../Input';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import scss from './dateSelect.scss';
-import { dateToString } from 'src/utils/formatters';
 
 type Props = {
   placeholder?: string;

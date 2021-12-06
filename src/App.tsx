@@ -6,7 +6,9 @@ import { Main } from './pages/Main';
 import { NotFound } from './pages/NotFound';
 import { store } from './reducers/movies';
 
-export const App = () => (
+export const App = () => {
+  console.log('app')
+  return (
   <Router>
     <Routes>
       <Route path="/" element={<Navigate to="search" />} />
@@ -29,4 +31,4 @@ export const App = () => (
       <Route path="*" element={<NotFound />} />
     </Routes>
   </Router>
-);
+)};
