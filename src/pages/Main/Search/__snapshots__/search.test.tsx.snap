@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search component renders snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="search"
+  >
+    <div
+      class="searchBg"
+    />
+    <div
+      class="searchImgWrapper"
+    >
+      <div
+        class="searchImg"
+      />
+    </div>
+    <div
+      class="searchContentWrapper"
+    >
+      <div
+        class="searchContent"
+      >
+        <div
+          class="searchBlock"
+        >
+          <h1>
+            FIND YOUR MOVIE
+          </h1>
+          <div
+            class="row"
+          >
+            <input
+              class="input"
+              id="search"
+              placeholder="What do you want to watch?"
+              value=""
+            />
+            <button
+              class="searchBtn button filled"
+              style="width: 223px; height: 57px;"
+              type="button"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
