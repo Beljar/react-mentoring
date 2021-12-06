@@ -21,6 +21,9 @@ export const Search: React.FC<Props> = ({ searchString = '', onSearch, onLoad })
   React.useEffect(() => {
     setCurSearchString(searchString);
   }, [searchString]);
+  const searchHandle = () => {
+    setQuery({ searchBy: 'title' }, curSearchString);
+  };
   return (
     <div className={scss.search}>
       <div className={scss.searchBg} />
@@ -39,16 +42,9 @@ export const Search: React.FC<Props> = ({ searchString = '', onSearch, onLoad })
                 onChange={(value) => {
                   setCurSearchString(value);
                 }}
+                onEnter={searchHandle}
               />
-              <Button
-                className={scss.searchBtn}
-                width={223}
-                height={57}
-                type="filled"
-                onClick={() => {
-                  setQuery({ searchBy: 'title' }, curSearchString);
-                }}
-              >
+              <Button className={scss.searchBtn} width={223} height={57} type="filled" onClick={searchHandle}>
                 Search
               </Button>
             </div>
