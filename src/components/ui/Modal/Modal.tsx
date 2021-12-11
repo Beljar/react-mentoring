@@ -11,8 +11,9 @@ type Props = {
 };
 
 export const Modal: React.FC<Props> = ({ children, isOpened, onClose }) => {
-  const container = React.useRef(document.createElement('div'));
+  const container = React.useRef<HTMLDivElement>();
   React.useEffect(() => {
+    container.current = document.createElement('div');
     document.querySelector('#main').appendChild(container.current);
     return () => {
       document.removeChild(container.current);
@@ -27,7 +28,10 @@ export const Modal: React.FC<Props> = ({ children, isOpened, onClose }) => {
         }
       }}
     >
-      <div className={scss.window} style={{ marginTop: `${document.documentElement.scrollTop + 175}px` }}>
+      <div
+        className={scss.window}
+        style={{ marginTop: `${typeof window !== 'undefined' ? document.documentElement.scrollTop + 175 : 0}px` }}
+      >
         <div className={scss.topBar}>
           <button
             onClick={() => {

@@ -1,6 +1,8 @@
 import * as React from 'react';
 
 import { renderToString } from 'react-dom/server';
+import { Navigator } from 'react-router-dom';
+import { StaticRouter } from 'react-router-dom/server';
 
 import { App } from './App';
 
@@ -22,8 +24,22 @@ function renderHTML(html) {
 
 export default function serverRender() {
   return (req, res) => {
-    const htmlString = renderToString(<App />);
+    console.log('ssr');
+    console.log(req.url);
+
+    const Nav = ({ to }) => {
+      console.log('navigate')
+      console.log(to);
+      res.writeHead(302, {
+        Location: to,
+      });
+      res.end();
+      return;
+      return <></>;
+    };
+
+    const htmlString = renderToString(<App AppRouter={StaticRouter} location={req.url} AppNavigate={Nav} />);
 
     res.send(renderHTML(htmlString));
-  }
+  };
 }
