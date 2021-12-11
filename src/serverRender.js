@@ -34,7 +34,6 @@ export default function serverRender() {
         Location: to,
       });
       res.end();
-      return;
       return <></>;
     };
 
