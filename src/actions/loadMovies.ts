@@ -7,6 +7,7 @@ export const initLoadMovies = () => (dispatch, getState) => {
 
 export const loadMovies = () => (dispatch, getState) => {
   const { isLoading } = getState();
+  console.log('loadMovies');
   if (!isLoading) {
     dispatch({ type: 'SET_LOADING', payload: true });
     apiGetMovies(getState().request).then((result) => {

@@ -19,7 +19,6 @@ module.exports = merge(common, {
     filename: 'server.js',
     libraryTarget: 'commonjs2',
   },
-
   module: {
     rules: [
       {

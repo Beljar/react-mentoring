@@ -1,4 +1,4 @@
-export * from './MovieType';
+export * from './types';
 export * from './emptyMovie';
 export * from './movieFromMovieDTO';
 export * from './moviesInitialRequest';

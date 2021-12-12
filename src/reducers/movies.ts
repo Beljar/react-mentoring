@@ -1,5 +1,3 @@
-import { applyMiddleware, createStore } from 'redux';
-import thunk from 'redux-thunk';
 import { MOVIES_INITIAL_REQUEST } from 'src/entities/movie';
 
 export const initialMovies = {
@@ -41,5 +39,3 @@ export const moviesReducer = (state = initialMovies, action) => {
       return state;
   }
 };
-
-export const store = createStore(moviesReducer, applyMiddleware(thunk));

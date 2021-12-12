@@ -30,6 +30,8 @@ export const Main: React.FC<Props> = ({ onSearch, onFilter, onSort, onLoad }) =>
   const { searchQuery: searchString } = useParams();
   const [query, setQuery] = useQuery();
   const { searchBy, sortBy, movie: movieId } = query;
+  console.log('main');
+  //onLoad();
   React.useEffect(() => {
     if (searchBy === 'genre' && searchString) {
       onFilter(searchString);
@@ -42,6 +44,7 @@ export const Main: React.FC<Props> = ({ onSearch, onFilter, onSort, onLoad }) =>
     if (movieId && movieId !== movie?.id) {
       apiGetMovie(movieId).then(setMovie);
     }
+    console.log('loading');
     onLoad();
   });
 

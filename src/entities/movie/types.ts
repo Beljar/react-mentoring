@@ -11,3 +11,12 @@ export type Movie = {
   url?: string;
   overview?: string;
 };
+
+export interface IMoviesRequest {
+  sortBy: string;
+  sortOrder: string;
+  searchBy: string;
+  search: string;
+  offset: number;
+  limit: number;
+}

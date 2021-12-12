@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Movie } from 'src/entities/movie/MovieType';
+import { Movie } from 'src/entities/movie/types';
 import { useFormik } from 'formik';
 import { Button } from '../Button';
 import { FormFieldType } from './FormFieldType';
