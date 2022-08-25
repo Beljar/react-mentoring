@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import { MOVIES_INITIAL_REQUEST } from 'src/entities/movie';
 
 const initialMovies = {
-  totalAmount: 0,
+  total: 0,
   data: [],
   request: MOVIES_INITIAL_REQUEST,
   offset: 0,
