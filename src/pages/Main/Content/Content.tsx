@@ -65,7 +65,7 @@ const Content: React.FC<Props> = ({ movies, totalAmount, isLoading, onLoad, onSo
 
 const mapStateToProps = (state) => ({
   movies: state.data,
-  totalAmount: state.totalAmount,
+  totalAmount: state.total,
   isLoading: state.isLoading,
 });
 
