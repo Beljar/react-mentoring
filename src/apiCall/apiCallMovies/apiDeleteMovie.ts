@@ -1,3 +1,3 @@
 import axios from 'axios';
 
-export const apiDeleteMovie = (id: number) => axios.delete(`http://localhost:4000/movies/${id}`);
+export const apiDeleteMovie = (id: number) => axios.delete(`${process.env.API_ROOT}/movies/${id}`);
